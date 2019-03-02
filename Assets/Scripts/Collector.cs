@@ -7,15 +7,17 @@ public class Collector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
-    
+
     [SerializeField]
     private GameObject target;
 
     [SerializeField]
     private GameObject move_to;
 
+    [SerializeField]
+    private int max_amount = 10;
 
     [SerializeField]
     private int amount;
@@ -23,6 +25,8 @@ public class Collector : MonoBehaviour
     [SerializeField]
     private GameObject home;
 
+    [SerializeField]
+    private Resource resource;
     public float speed = 1;
 
 
@@ -57,15 +61,27 @@ public class Collector : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
+
         if (collision.gameObject.tag == "Resource")
+        {
+            //Amount of resources worker is carrying right now
+            this.amount = collision.gameObject.GetComponent<Resource>().extractResource(this.max_amount);
+            //Gives target resource to resource variable
+            this.resource = this.target.GetComponent<Resource>();
             StartCoroutine("goHome");
+        }
         else if (collision.gameObject.name == "City")
+        {
+            //resets amount and resource variables
+            this.amount = 0;
+            this.resource = null;
             MoveTo(this.target);
+        }
     }
     IEnumerator goHome()
     {
         yield return new WaitForSeconds(4);
         MoveTo(home);
     }
+
 }
