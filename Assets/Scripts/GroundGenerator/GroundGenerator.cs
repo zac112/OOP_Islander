@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GroundGenerator : MonoBehaviour
 {
-
-    int[,] ground = new int[10, 10];
+    
+    int[,] ground = new int[15, 15];
 
     [SerializeField]
-    GameObject[] tiles;
+    private GameObject[] tiles = null;
     [SerializeField]
-    GameObject[] resourceGOs;
+    private GameObject[] resourceGOs = null;
 
     private int food = 2;
     private int stone = 3;
@@ -29,25 +29,37 @@ public class GroundGenerator : MonoBehaviour
             for (int j = 1; j < ground.GetLength(1) - 1; j++)
             {
                 ground[i, j] = 1;
-                if (Random.value < 0.10f)
-                {
-                    ground[i, j] = 2;
-                }
-                if (Random.value < 0.10f)
-                {
-                    ground[i, j] = 3;
-                }
-                if (Random.value < 0.10f)
-                {
-                    ground[i, j] = 4;
-                }
+                if (isEdge(i,j))
+                    continue;
+                generateResource(i,j);
             }
         }
 
         createGround();
         createResources();
+
+        Destroy(gameObject);
     }
 
+    bool isEdge(int x, int y) {
+        return x == 1 || x == ground.GetLength(0) - 2 || y == 1 || y == ground.GetLength(1) - 2;
+    }
+
+    void generateResource(int x, int y) {
+        
+        if (Random.value < 0.10f)
+        {
+            ground[x, y] = 2;
+        }
+        if (Random.value < 0.10f)
+        {
+            ground[x, y] = 3;
+        }
+        if (Random.value < 0.10f)
+        {
+            ground[x, y] = 4;
+        }
+    }
     void createGround()
     {
         for (int i = 1; i < ground.GetLength(0) - 1; i++)
@@ -59,39 +71,39 @@ public class GroundGenerator : MonoBehaviour
 
                 if (ground[i - 1, j] == 0 && ground[i, j - 1] == 0)
                 {
-                    Instantiate<GameObject>(tiles[6], new Vector3(i, j, -1), Quaternion.identity);
+                    spawn(tiles[6], i, j);
                 }
                 else if (ground[i + 1, j] == 0 && ground[i, j - 1] == 0)
                 {
-                    Instantiate<GameObject>(tiles[8], new Vector3(i, j, -1), Quaternion.identity);
+                    spawn(tiles[8], i, j);
                 }
                 else if (ground[i + 1, j] == 0 && ground[i, j + 1] == 0)
                 {
-                    Instantiate<GameObject>(tiles[2], new Vector3(i, j, -1), Quaternion.identity);
+                    spawn(tiles[2], i, j);
                 }
                 else if (ground[i - 1, j] == 0 && ground[i, j + 1] == 0)
                 {
-                    Instantiate<GameObject>(tiles[0], new Vector3(i, j, -1), Quaternion.identity);
+                    spawn(tiles[0], i, j);
                 }
                 else if (ground[i + 1, j] == 0)
                 {
-                    Instantiate<GameObject>(tiles[5], new Vector3(i, j, -1), Quaternion.identity);
+                    spawn(tiles[5], i, j);
                 }
                 else if (ground[i - 1, j] == 0)
                 {
-                    Instantiate<GameObject>(tiles[3], new Vector3(i, j, -1), Quaternion.identity);
+                    spawn(tiles[3], i, j);
                 }
                 else if (ground[i, j + 1] == 0)
                 {
-                    Instantiate<GameObject>(tiles[1], new Vector3(i, j, -1), Quaternion.identity);
+                    spawn(tiles[1], i, j);
                 }
                 else if (ground[i, j - 1] == 0)
                 {
-                    Instantiate<GameObject>(tiles[7], new Vector3(i, j, -1), Quaternion.identity);
+                    spawn(tiles[7], i, j);
                 }
                 else
                 {
-                    Instantiate<GameObject>(tiles[4], new Vector3(i, j, -1), Quaternion.identity);
+                    spawn(tiles[4], i, j);
                 }
             }
         }
@@ -105,17 +117,21 @@ public class GroundGenerator : MonoBehaviour
             {
                 if (ground[i, j] == wood)
                 {
-                    Instantiate<GameObject>(resourceGOs[0]);
+                    spawn(resourceGOs[0], i, j, -1);
                 }
                 if (ground[i, j] == stone)
                 {
-                    Instantiate<GameObject>(resourceGOs[1]);
+                    spawn(resourceGOs[1], i, j,- 1);
                 }
                 if (ground[i, j] == food)
                 {
-                    Instantiate<GameObject>(resourceGOs[2]);
+                    spawn(resourceGOs[2], i, j, -1); 
                 }
             }
         }
+    }
+
+    private GameObject spawn(GameObject go, int x, int y, int z = 1) {
+        return Instantiate<GameObject>(go, new Vector3(x, y, z), Quaternion.identity);
     }
 }
