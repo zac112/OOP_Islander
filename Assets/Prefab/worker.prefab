@@ -98,7 +98,7 @@ MonoBehaviour:
   move_to: {fileID: 0}
   max_amount: 10
   amount: 0
-  home: {fileID: 0}
+  home: {fileID: 7607310651946833762, guid: 118ed7528555d45418acb5a87b330000, type: 3}
   resource: {fileID: 0}
   speed: 1
 --- !u!61 &548039319383633028
