@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     [SerializeField]
     private GameObject target;
 
@@ -29,6 +23,11 @@ public class Collector : MonoBehaviour
     private Resource resource;
     public float speed = 1;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        home = GameObject.FindGameObjectWithTag("Home");
+    }
 
     public void SetTarget(GameObject target)
     {
@@ -38,9 +37,7 @@ public class Collector : MonoBehaviour
     {
         this.move_to = target;
     }
-    GameObject lastClicked;
-    Ray ray;
-    RaycastHit rayHit;
+
     // Update is called once per frame
     void Update()
     {
