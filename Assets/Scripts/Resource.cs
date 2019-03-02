@@ -24,17 +24,24 @@ public abstract class Resource : MonoBehaviour
         {
             int r = resources;
             resources = 0;
+            refreshSprite();
+            checkExistence();
             return r;
         }
         else
         {
             resources = resources - amount;
+            refreshSprite();
+            checkExistence();
             return amount;
         }
       
     }
 
+    public abstract void refreshSprite();
 
-    
+
+
+
     public abstract void checkExistence();
 }

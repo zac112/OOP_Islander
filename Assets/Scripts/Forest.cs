@@ -20,7 +20,7 @@ public class Forest : Resource
         }
     }
 
-    public void refreshSprite()
+    public override void refreshSprite()
     {
         if (resources < 125)
         {
@@ -70,22 +70,21 @@ public class Forest : Resource
         resources = Random.Range(50, 300);
         isForester = false;
         growthspeed = 1;
+        StartCoroutine("Grow");
     }
 
     // Update is called once per frame
     void Update()
     {
-        checkExistence();
-        StartCoroutine("Grow");
-        refreshSprite();
+        
     }
 
     IEnumerator Grow()
     {
-        yield return new WaitForSeconds(growthspeed);
         while (resources < 1000)
         {
             resources++;
+            yield return new WaitForSeconds(growthspeed);
         }
     }
 }
