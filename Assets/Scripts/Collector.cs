@@ -57,7 +57,7 @@ public class Collector : MonoBehaviour
             }
         }
         if (target != null)
-            transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, transform.position.y,transform.position.z), move_to.transform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), move_to.transform.position, speed * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
