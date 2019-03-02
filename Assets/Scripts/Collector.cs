@@ -57,7 +57,7 @@ public class Collector : MonoBehaviour
             }
         }
         if (target != null)
-            transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), move_to.transform.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, transform.position.y, -1f), move_to.transform.position, speed * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -70,13 +70,14 @@ public class Collector : MonoBehaviour
             this.resource = this.target.GetComponent<Resource>();
             StartCoroutine("goHome");
         }
-        else if (collision.gameObject.name == "City")
+        else if (collision.gameObject.name == "City" && this.resource != null)
         {
             //resets amount and resource variables
             collision.gameObject.GetComponent<City>().AddResource(this.resource, this.amount);
             this.amount = 0;
             this.resource = null;
             MoveTo(this.target);
+            
         }
     }
     IEnumerator goHome()
