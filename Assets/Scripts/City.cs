@@ -5,7 +5,24 @@ using UnityEngine;
 
 public class City : MonoBehaviour
 {
-    
+    [SerializeField]
+    GameObject worker;
+
+    [SerializeField]
+    public int population = 0;
+
+    [SerializeField]
+    public int populationLevel = 0;
+
+    [SerializeField]
+    public int resourcePoolLevel = 0;
+
+    [SerializeField]
+    public int roadLevel = 0;
+
+    [SerializeField]
+    public int collectorLevel = 0;
+
     
     // Start is called before the first frame update
     void Start()
@@ -15,12 +32,30 @@ public class City : MonoBehaviour
 
     public int GetLevel(UpgradeTargets target)
     {
+        switch (target)
+        {
+            case UpgradeTargets.population:
+                return this.populationLevel;
+            case UpgradeTargets.capacity:
+                return this.resourcePoolLevel;
+            case UpgradeTargets.speed:
+                return this.roadLevel;
+            case UpgradeTargets.collector:
+                return this.collectorLevel;
+            default:
+                Debug.Log("Default");
+                return -1;
+                break;
+        }
         return 1;
     }
 
     public void AddCollector()
     {
-        
+
+        GameObject go = Instantiate<GameObject>(worker);
+
+        go.transform.position = new Vector3();
     }
 
 
@@ -46,7 +81,7 @@ public class City : MonoBehaviour
 
     public void AddPopulation(int v)
     {
-        
+        this.population += v;
     }
 
 
@@ -87,9 +122,15 @@ public class City : MonoBehaviour
         {
             lista[i].SetCapacity(x);
         }
+        this.resourcePoolLevel++;
     }
     public void UseResources(List<int> a)
     {
-        
+        ResourcePool[] lista = gameObject.GetComponents<ResourcePool>();
+
+        for (int i = 0; i < lista.Length; i++)
+        {
+            UseResource(lista[i].GetResource(), a[0]);
+        }
     }
 }
