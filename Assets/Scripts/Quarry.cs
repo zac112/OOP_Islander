@@ -12,6 +12,12 @@ public class Quarry : Resource
             Destroy(gameObject);
         }
     }
+
+    public override void refreshSprite()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
