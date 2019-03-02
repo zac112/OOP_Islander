@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +12,18 @@ public class City : MonoBehaviour
     {
         
     }
-    
-    
+
+    public int GetLevel(UpgradeTargets target)
+    {
+        return 1;
+    }
+
+    public void AddCollector()
+    {
+        
+    }
+
+
     /** 
      *  Kayttaa resurssia r, maaran 'amount' verran (amount >= 0).
      *  Voidaan kayttaa maximissaan sen verran resursseja mita niita on kaytossa.
@@ -32,7 +43,12 @@ public class City : MonoBehaviour
             }
         }
     }
-   
+
+    public void AddPopulation(int v)
+    {
+        
+    }
+
 
     /** 
 *  Lisaa resurssia r, maaran 'amount' verran (amount >= 0).

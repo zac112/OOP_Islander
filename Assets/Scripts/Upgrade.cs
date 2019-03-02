@@ -58,7 +58,7 @@ public abstract class Upgrade : MonoBehaviour
 
     }
 
-    public List<float> getPrices(float modifier)
+    public List<float> GetPrices(float modifier)
     {
         List<float> prices = new List<float>();
         foreach(KeyValuePair<Resources, int> key in resources)

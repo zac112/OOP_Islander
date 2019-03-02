@@ -59,4 +59,8 @@ public class ResourcePool : MonoBehaviour
     {
         this.maxCapacity += x;
     }
+    public void AddCollector()
+    {
+        Collector c = gameObject.AddComponent<Collector>();
+    }
 }

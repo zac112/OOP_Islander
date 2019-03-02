@@ -21,8 +21,8 @@ public class RoadUpgrade : Upgrade
         UpgradeTargets target = UpgradeTargets.speed;
         Road road = gameObject.GetComponent<Road>();
         City city = gameObject.GetComponent<City>();
-        float currentLevel = road.getLevel(target);
-        city.UseResources(getPrices(currentLevel));
+        float currentLevel = road.GetLevel(target);
+        city.UseResources(GetPrices(currentLevel));
         road.IncreaseSpeed(1 / currentLevel);
         Debug.Log("Road upgraded");
     }
