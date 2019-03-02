@@ -11,10 +11,15 @@ public class GroundGenerator : MonoBehaviour
     private GameObject[] tiles = null;
     [SerializeField]
     private GameObject[] resourceGOs = null;
+    [SerializeField]
+    private GameObject homeGO = null;
+    [SerializeField]
+    private GameObject workerGO = null;
 
     private int food = 2;
     private int stone = 3;
     private int wood = 4;
+    private int home = 5;
     /*
      0,1,2
      3,4,5
@@ -36,6 +41,7 @@ public class GroundGenerator : MonoBehaviour
         }
 
         createGround();
+        createHome();
         createResources();
 
         Destroy(gameObject);
@@ -131,6 +137,11 @@ public class GroundGenerator : MonoBehaviour
         }
     }
 
+    private void createHome() {
+        ground[ground.GetLength(0) / 2, ground.GetLength(1) / 2] = home;
+        spawn(homeGO, ground.GetLength(0) / 2, ground.GetLength(1) / 2, 0);
+        spawn(workerGO, ground.GetLength(0) / 2, ground.GetLength(1) / 2, 0);
+    }
     private GameObject spawn(GameObject go, int x, int y, int z = 1) {
         return Instantiate<GameObject>(go, new Vector3(x, y, z), Quaternion.identity);
     }

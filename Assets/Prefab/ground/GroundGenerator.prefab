@@ -57,3 +57,5 @@ MonoBehaviour:
   - {fileID: 3917056544714409889, guid: 01c364ebfc67d2c448bff8e94d6a73e4, type: 3}
   - {fileID: 7205059401526678128, guid: 8a7319b0cfb1b554a8dd101ad4e060be, type: 3}
   - {fileID: 7666959473089792538, guid: 3d8a1dd57f0015c4093d8bfb80c3c303, type: 3}
+  homeGO: {fileID: 7607310651946833762, guid: 118ed7528555d45418acb5a87b330000, type: 3}
+  workerGO: {fileID: 548039319383633024, guid: 7dc194a2047a39340a91ca7636a56290, type: 3}
