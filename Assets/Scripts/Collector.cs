@@ -73,6 +73,7 @@ public class Collector : MonoBehaviour
         else if (collision.gameObject.name == "City")
         {
             //resets amount and resource variables
+            collision.gameObject.GetComponent<City>().AddResource(this.resource, this.amount);
             this.amount = 0;
             this.resource = null;
             MoveTo(this.target);
