@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class BerryBush : Resource
 {
+
+    public override void checkExistence()
+    {
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
