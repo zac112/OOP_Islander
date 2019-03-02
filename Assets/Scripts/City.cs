@@ -88,7 +88,7 @@ public class City : MonoBehaviour
             lista[i].SetCapacity(x);
         }
     }
-    public void UseResources(List<float> a)
+    public void UseResources(List<int> a)
     {
         
     }
