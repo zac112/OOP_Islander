@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IAction
 {
-    void React();
+    void React(EventType eventType);
 }

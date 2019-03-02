@@ -18,7 +18,7 @@ public static class EventSystem
         if (events.ContainsKey(name))
         {
             foreach (IAction e in events.Values){
-                e.React();
+                e.React(name);
             }
         }
     }
