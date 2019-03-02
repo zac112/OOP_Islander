@@ -20,6 +20,11 @@ public class GroundGenerator : MonoBehaviour
     private int stone = 3;
     private int wood = 4;
     private int home = 5;
+
+    private int groundDepth = 1;
+    private int resourceDepth = 0;
+    private int houseDepth = -2;
+    private int workerDepth = -1;
     /*
      0,1,2
      3,4,5
@@ -77,39 +82,39 @@ public class GroundGenerator : MonoBehaviour
 
                 if (ground[i - 1, j] == 0 && ground[i, j - 1] == 0)
                 {
-                    spawn(tiles[6], i, j);
+                    spawn(tiles[6], i, j, groundDepth);
                 }
                 else if (ground[i + 1, j] == 0 && ground[i, j - 1] == 0)
                 {
-                    spawn(tiles[8], i, j);
+                    spawn(tiles[8], i, j, groundDepth);
                 }
                 else if (ground[i + 1, j] == 0 && ground[i, j + 1] == 0)
                 {
-                    spawn(tiles[2], i, j);
+                    spawn(tiles[2], i, j, groundDepth);
                 }
                 else if (ground[i - 1, j] == 0 && ground[i, j + 1] == 0)
                 {
-                    spawn(tiles[0], i, j);
+                    spawn(tiles[0], i, j, groundDepth);
                 }
                 else if (ground[i + 1, j] == 0)
                 {
-                    spawn(tiles[5], i, j);
+                    spawn(tiles[5], i, j, groundDepth);
                 }
                 else if (ground[i - 1, j] == 0)
                 {
-                    spawn(tiles[3], i, j);
+                    spawn(tiles[3], i, j, groundDepth);
                 }
                 else if (ground[i, j + 1] == 0)
                 {
-                    spawn(tiles[1], i, j);
+                    spawn(tiles[1], i, j, groundDepth);
                 }
                 else if (ground[i, j - 1] == 0)
                 {
-                    spawn(tiles[7], i, j);
+                    spawn(tiles[7], i, j, groundDepth);
                 }
                 else
                 {
-                    spawn(tiles[4], i, j);
+                    spawn(tiles[4], i, j, groundDepth);
                 }
             }
         }
@@ -123,15 +128,15 @@ public class GroundGenerator : MonoBehaviour
             {
                 if (ground[i, j] == wood)
                 {
-                    spawn(resourceGOs[0], i, j, -1);
+                    spawn(resourceGOs[0], i, j, resourceDepth);
                 }
                 if (ground[i, j] == stone)
                 {
-                    spawn(resourceGOs[1], i, j,- 1);
+                    spawn(resourceGOs[1], i, j, resourceDepth);
                 }
                 if (ground[i, j] == food)
                 {
-                    spawn(resourceGOs[2], i, j, -1); 
+                    spawn(resourceGOs[2], i, j, resourceDepth); 
                 }
             }
         }
@@ -139,10 +144,10 @@ public class GroundGenerator : MonoBehaviour
 
     private void createHome() {
         ground[ground.GetLength(0) / 2, ground.GetLength(1) / 2] = home;
-        spawn(homeGO, ground.GetLength(0) / 2, ground.GetLength(1) / 2, 0);
-        spawn(workerGO, ground.GetLength(0) / 2, ground.GetLength(1) / 2, -3);
+        spawn(homeGO, ground.GetLength(0) / 2, ground.GetLength(1) / 2, houseDepth);
+        spawn(workerGO, ground.GetLength(0) / 2, ground.GetLength(1) / 2, workerDepth);
     }
-    private GameObject spawn(GameObject go, int x, int y, int z = 1) {
+    private GameObject spawn(GameObject go, int x, int y, int z) {
         return Instantiate<GameObject>(go, new Vector3(x, y, z), Quaternion.identity);
     }
 }
