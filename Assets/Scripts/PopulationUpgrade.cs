@@ -20,9 +20,9 @@ public class PopulationUpgrade : Upgrade
     {
         UpgradeTargets target = UpgradeTargets.population;
         City city = gameObject.GetComponent<City>();
-        float currentLevel = city.getLevel(target);
-        city.useResources(getPrices(currentLevel));
-        city.addPopulation(currentLevel * 10);
+        float currentLevel = city.GetLevel(target);
+        city.UseResources(getPrices(currentLevel));
+        city.AddPopulation(currentLevel * 10);
         Debug.Log("population upgraded");
     }
 }

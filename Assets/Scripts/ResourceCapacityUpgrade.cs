@@ -20,9 +20,9 @@ public class ResourceCapacityUpgrade : Upgrade
     {
         UpgradeTargets target = UpgradeTargets.capacity;
         City city = gameObject.GetComponent<City>();
-        float currentLevel = city.getLevel(target);
-        city.useResources(getPrices(currentLevel));
-        city.increaseCapacity(currentLevel * 100);
+        float currentLevel = city.GetLevel(target);
+        city.UseResources(GetPrices(currentLevel));
+        city.IncreaseCapacity(currentLevel * 100);
         Debug.Log("Capacity upgraded");
     }
 

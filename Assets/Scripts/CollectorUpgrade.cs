@@ -11,9 +11,9 @@ public class CollectorUpgrade : Upgrade
 
         UpgradeTargets target = UpgradeTargets.collector;
         City city = gameObject.GetComponent<City>();
-        float currentLevel = city.getLevel(target);
-        city.useResources(getPrices(currentLevel));
-        city.addCollector();
+        float currentLevel = city.GetLevel(target);
+        city.UseResources(getPrices(currentLevel));
+        city.AddCollector();
     }
 
     // Update is called once per frame

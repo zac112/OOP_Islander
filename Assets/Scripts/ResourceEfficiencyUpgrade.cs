@@ -20,7 +20,7 @@ public class ResourceEfficiencyUpgrade : Upgrade
     {
         City city = gameObject.GetComponent<City>();
         increaseEfficiencyLevel();
-        city.useResources(getPrices(getEfficiencyLevel() * getEfficiencyLevel()));
+        city.UseResources(getPrices(getEfficiencyLevel() * getEfficiencyLevel()));
         Debug.Log("Efficienfy upgraded to: " + getEfficiencyLevel());
     }
 }
