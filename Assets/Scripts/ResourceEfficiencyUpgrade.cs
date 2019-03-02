@@ -16,11 +16,11 @@ public class ResourceEfficiencyUpgrade : Upgrade
         
     }
 
-    public void upgrade()
+    public void UpgradeEfficiency()
     {
         City city = gameObject.GetComponent<City>();
-        increaseEfficiencyLevel();
-        city.UseResources(GetPrices(getEfficiencyLevel() * getEfficiencyLevel()));
-        Debug.Log("Efficienfy upgraded to: " + getEfficiencyLevel());
+        IncreaseEfficiencyLevel();
+        city.UseResources(GetPrices(GetEfficiencyLevel() * GetEfficiencyLevel()));
+        Debug.Log("Efficienfy upgraded to: " + GetEfficiencyLevel());
     }
 }

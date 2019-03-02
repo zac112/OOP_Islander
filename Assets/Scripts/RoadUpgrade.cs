@@ -16,7 +16,7 @@ public class RoadUpgrade : Upgrade
         
     }
 
-    public void upgrade()
+    public void UpgradeRoad()
     {
         UpgradeTargets target = UpgradeTargets.speed;
         Road road = gameObject.GetComponent<Road>();

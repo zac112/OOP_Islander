@@ -25,17 +25,17 @@ public abstract class Upgrade : MonoBehaviour
         
     }
 
-    public float getEfficiencyLevel()
+    public float GetEfficiencyLevel()
     {
         return efficiencyLevel;
     }
 
-    public void increaseEfficiencyLevel()
+    public void IncreaseEfficiencyLevel()
     {
         efficiencyLevel++;
     }
 
-    public float getEfficiency()
+    public float GetEfficiency()
     {
         switch (efficiencyLevel)
         {
@@ -63,7 +63,7 @@ public abstract class Upgrade : MonoBehaviour
         List<float> prices = new List<float>();
         foreach(KeyValuePair<Resources, int> key in resources)
         {
-            prices.Add(key.Value * modifier * 50 * getEfficiency());
+            prices.Add(key.Value * modifier * 50 * GetEfficiency());
         }
 
         return prices;

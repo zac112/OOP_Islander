@@ -16,7 +16,7 @@ public class ResourceCapacityUpgrade : Upgrade
         
     }
 
-    public void upgrade()
+    public void UpgradeCapacity()
     {
         UpgradeTargets target = UpgradeTargets.capacity;
         City city = gameObject.GetComponent<City>();

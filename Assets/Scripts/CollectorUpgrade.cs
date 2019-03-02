@@ -11,7 +11,7 @@ public class CollectorUpgrade : Upgrade
 
         UpgradeTargets target = UpgradeTargets.collector;
         City city = gameObject.GetComponent<City>();
-        float currentLevel = city.GetLevel(target);
+        int currentLevel = city.GetLevel(target);
         city.UseResources(GetPrices(currentLevel));
         city.AddCollector();
     }

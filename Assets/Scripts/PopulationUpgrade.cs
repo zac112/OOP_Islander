@@ -16,7 +16,7 @@ public class PopulationUpgrade : Upgrade
         
     }
 
-    public void upgrade()
+    public void UpgradePopulation()
     {
         UpgradeTargets target = UpgradeTargets.population;
         City city = gameObject.GetComponent<City>();
