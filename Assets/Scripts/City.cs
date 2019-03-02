@@ -17,7 +17,7 @@ public class City : MonoBehaviour
      *  Kayttaa resurssia r, maaran 'amount' verran (amount >= 0).
      *  Voidaan kayttaa maximissaan sen verran resursseja mita niita on kaytossa.
      */
-    public void useResource(Resource r, int amount)
+    public void UseResource(Resource r, int amount)
     {
         if (amount<0)
         {
@@ -26,12 +26,13 @@ public class City : MonoBehaviour
         ResourcePool[] lista = gameObject.GetComponents<ResourcePool>();
         for (int i = 0; i < lista.Length; i++)
         {
-            if (lista[i].getResource().GetType().Equals(r.GetType()))
+            if (lista[i].GetResource().GetType().Equals(r.GetType()))
             {
-                lista[i].useResource(amount);
+                lista[i].UseResource(amount);
             }
         }
     }
+   
 
     /** 
 *  Lisaa resurssia r, maaran 'amount' verran (amount >= 0).
@@ -39,7 +40,7 @@ public class City : MonoBehaviour
 *  ts. jos nykyinen resurssimaara + lisatty maara >= maximikapasiteetti
 *  niin uusi resurssimaara = maximikapasiteetti
 */
-    public void addResource(Resource r, int amount)
+    public void AddResource(Resource r, int amount)
     {
         if (amount<0)
         {
@@ -49,14 +50,26 @@ public class City : MonoBehaviour
        
         for (int i = 0; i < lista.Length; i++)
         {
-            if (lista[i].getResource().GetType().Equals(r.GetType()))
+            if (lista[i].GetResource().GetType().Equals(r.GetType()))
             {
-                lista[i].addResource(amount);
+                lista[i].AddResource(amount);
                 return;
             }
         }
         ResourcePool respool = gameObject.AddComponent<ResourcePool>();
-        respool.setResource(r);
-        respool.addResource(amount);
+        respool.SetResource(r);
+        respool.AddResource(amount);
+    }
+
+    /**
+     * Lisaa kaikkien resurssipoolien maxKapasiteettia x:n verran
+     */
+    public void IncreaseCapacity(int x)
+    {
+        ResourcePool[] lista = gameObject.GetComponents<ResourcePool>();
+        for (int i = 0; i < lista.Length; i++)
+        {
+            lista[i].SetCapacity(x);
+        }
     }
 }

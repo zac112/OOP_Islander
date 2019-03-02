@@ -18,19 +18,19 @@ public class ResourcePool : MonoBehaviour
     void Start()
     {
     }
-    public void setResource(Resource r)
+    public void SetResource(Resource r)
     {
         this.r = r;
     }
 
-    public Resource getResource()
+    public Resource GetResource()
     {
         return r;
     }
     /**
      * Kayttaa resurssia maaran X verran
      */
-    public void useResource(int x)
+    public void UseResource(int x)
     {
         if (this.amount - x <= 0)
         {
@@ -44,7 +44,7 @@ public class ResourcePool : MonoBehaviour
     /**
      * Lisaa resurssia maaran X verran
      */
-    public void addResource(int x)
+    public void AddResource(int x)
     {
         if (this.amount + x >= this.maxCapacity)
         {
@@ -54,5 +54,9 @@ public class ResourcePool : MonoBehaviour
         {
             this.amount += x;
         }
+    }
+    public void SetCapacity(int x)
+    {
+        this.maxCapacity += x;
     }
 }
