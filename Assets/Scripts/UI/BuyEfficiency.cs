@@ -21,6 +21,8 @@ public class BuyEfficiency : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Debug.Log("Ostit Tehokkuutta");
+            ResourceEfficiencyUpgrade reu = gameObject.GetComponent<ResourceEfficiencyUpgrade>();
+            reu.UpgradeEfficiency();
         }
     }
 }

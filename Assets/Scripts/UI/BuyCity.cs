@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class BuyCity : MonoBehaviour
 {
+
+    [SerializeField]
+    private GameObject endGame;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +24,7 @@ public class BuyCity : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Ostit Voiton");
+            Instantiate<GameObject>(endGame);
         }
     }
 }

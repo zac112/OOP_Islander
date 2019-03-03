@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class UpgradeShop : MonoBehaviour
 { 
-    private bool shopVisible;
 
     // Start is called before the first frame update
     void Start()
     {
-        shopVisible = false;
+
     }
 
     // Update is called once per frame
@@ -20,6 +19,6 @@ public class UpgradeShop : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        //Debug.Log("Kauppa auki");
+        Debug.Log("Kauppa auki");
     }
 }

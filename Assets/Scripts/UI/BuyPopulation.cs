@@ -13,14 +13,15 @@ public class BuyPopulation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+         
     }
 
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Ostit Ihmisia");
+            PopulationUpgrade pop = gameObject.GetComponent<PopulationUpgrade>();
+            pop.UpgradePopulation();
         }
     }
 }

@@ -32,14 +32,16 @@ public class WinGame : MonoBehaviour
         while (count < 9)
         {
             GameObject go = Instantiate<GameObject>(housePrefab);
+            Destroy(go.GetComponent<BoxCollider2D>());
             houses.Add(go);
             go.transform.position = new Vector3(Random.Range(1f, 14f), Random.Range(1f, 14f),-5);
             spawnRate -= 0.5f;
             yield return new WaitForSeconds(spawnRate);
             count++;
         }
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             GameObject go = Instantiate<GameObject>(housePrefab);
+            Destroy(go.GetComponent<BoxCollider2D>());
             houses.Add(go);
             go.transform.position = new Vector3(Random.Range(1f, 14f), Random.Range(1f, 14f), -5);
             yield return new WaitForSeconds(spawnRate);
