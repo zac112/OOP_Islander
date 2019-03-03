@@ -66,7 +66,10 @@ public class AudioSystem : MonoBehaviour, IAction
         {
             FanfareClip();
         }
-        
+        if (type == EventType.WinMusic)
+        {
+            WinClip();
+        }
     }
 
 
@@ -114,7 +117,10 @@ public class AudioSystem : MonoBehaviour, IAction
     {
         StartCoroutine("FadeOutIn", new Timing(0, 0));
     }
-
+    public void WinClip()
+    {
+        StartCoroutine("FadeOutIn", new Timing(1, 10));
+    }
     IEnumerator FadeOutIn(Timing t) {
         //yield return FadeOut(t.duration);
         yield return StartCoroutine("FadeOut", t.duration);
