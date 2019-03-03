@@ -17,7 +17,7 @@ public class CollectorMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (col.GetMoveToTarget() == null) return;
         //Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 target = col.GetMoveToTarget().transform.position;
         Vector3 dir = target - transform.position;
