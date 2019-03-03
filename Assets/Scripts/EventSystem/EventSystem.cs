@@ -15,9 +15,12 @@ public static class EventSystem
 
     public static void EventHappened(EventType name)
     {
+        Debug.Log("happened");
         if (events.ContainsKey(name))
         {
-            foreach (IAction e in events.Values){
+
+            Debug.Log("contains: "+events.Values.ToString());
+            foreach (IAction e in events[name]){
                 e.React(name);
             }
         }
