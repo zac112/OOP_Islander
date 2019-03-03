@@ -18,11 +18,15 @@ public class Collector : MonoBehaviour
 
     [SerializeField]
     private GameObject home;
-
+    
     [SerializeField]
     private Resource resource;
     public float speed = 1;
 
+    [SerializeField]
+    private GameObject target_flag;
+
+    public GameObject flag;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +41,7 @@ public class Collector : MonoBehaviour
     {
         this.move_to = target;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -49,8 +53,12 @@ public class Collector : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null)
             {
+                DestroyImmediate(target_flag);
+                target_flag = Instantiate(flag, hit.point, Quaternion.identity);
+                target_flag.GetComponent<Flag>().SetWorker(this.gameObject);
                 SetTarget(hit.collider.gameObject);
-                MoveTo(hit.collider.gameObject);
+                if(resource == null || hit.collider.gameObject.tag == "Home")
+                    MoveTo(hit.collider.gameObject);
             }
         }
         if (move_to != null)
@@ -59,15 +67,28 @@ public class Collector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "Resource")
+        if (target_flag != null)
         {
-            //Amount of resources worker is carrying right now
-            this.amount = collision.gameObject.GetComponent<Resource>().extractResource(this.max_amount);
-            //Gives target resource to resource variable
-            this.resource = this.target.GetComponent<Resource>();
-            StartCoroutine("goHome");
+            if(collision.gameObject.transform.position == target_flag.transform.position) { 
+                if(resource == null)
+                {
+                    /*if(target.GetComponent<Resource>().vie_tavaraa())
+                    {
+                        
+                    }
+                    else
+                    {*/
+                        //Amount of resources worker is carrying right now
+                        this.amount = target.GetComponent<Resource>().extractResource(this.max_amount);
+                        //Gives target resource to resource variable
+                        this.resource = this.target.GetComponent<Resource>();
+                    //}
+                   
+                }
+                StartCoroutine("goHome");
+            }
         }
-        else if (collision.gameObject.tag == "Home" && this.resource != null)
+         if (collision.gameObject.tag == "Home" && this.resource != null)
         {
             //resets amount and resource variables
             collision.gameObject.GetComponent<City>().AddResource(this.resource, this.amount);
@@ -80,6 +101,8 @@ public class Collector : MonoBehaviour
     IEnumerator goHome()
     {
         yield return new WaitForSeconds(4);
+        if(target == null)
+            DestroyImmediate(target_flag);
         MoveTo(home);
     }
 
