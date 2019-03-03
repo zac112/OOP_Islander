@@ -22,43 +22,43 @@ public class Forest : Resource
 
     public override void refreshSprite()
     {
-        if (resources < 125)
+        if (getAmount() < 125)
         {
-            //yhden puun sprite
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[7];
         }
-        else if (resources < 250)
+        else if (getAmount() < 250)
         {
-            //2 sprite
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[6];
         }
-        else if (resources < 375)
+        else if (getAmount() < 375)
         {
-
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[5];
         }
-        else if (resources < 500)
+        else if (getAmount() < 500)
         {
-
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[4];
         }
-        else if (resources < 625)
+        else if (getAmount() < 625)
         {
-
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[3];
         }
-        else if (resources < 750)
+        else if (getAmount() < 750)
         {
-
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[2];
         }
-        else if (resources < 875)
+        else if (getAmount() < 875)
         {
-
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
         }
         else
         {
-
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
         }
     }
 
     public override void checkExistence()
     {
-        if (resources < 1)
+        if (getAmount() < 1)
         {
             Destroy(gameObject);
         }
@@ -67,7 +67,8 @@ public class Forest : Resource
     // Start is called before the first frame update
     void Start()
     {
-        resources = Random.Range(50, 300);
+
+        setAmount(Random.Range(50, 300));
         isForester = false;
         growthspeed = 1;
         StartCoroutine("Grow");
@@ -81,9 +82,9 @@ public class Forest : Resource
 
     IEnumerator Grow()
     {
-        while (resources < 1000)
+        while (getAmount() < 1000)
         {
-            resources++;
+            setAmount(getAmount() + 1);
             yield return new WaitForSeconds(growthspeed);
         }
     }

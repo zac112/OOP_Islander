@@ -4,11 +4,17 @@ using UnityEngine;
 
 public abstract class Resource : MonoBehaviour
 {
-    protected int resources;
+    [SerializeField]
+    private int resources;
+
+    [SerializeField]
+    protected Sprite[] sprites;
+
 
     public void setAmount(int i)
     {
         resources = i;
+        refreshSprite();
     }
 
     public int getAmount()

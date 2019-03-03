@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BerryBush : Resource
 {
-
     private float growthspeed;
 
     public override void checkExistence()
@@ -14,41 +13,45 @@ public class BerryBush : Resource
 
     public override void refreshSprite()
     {
-        if (resources < 100)
+        if (getAmount() < 100)
         {
-            //1 marjan sprite
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[5];
         }
-        else if (resources < 200)
+        else if (getAmount() < 200)
         {
-            //2 marjan sprite
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[4];
         }
-        else if (resources < 300)
+        else if (getAmount() < 300)
         {
-            //3 marjan sprite
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[3];
         }
-        else if (resources < 400)
+        else if (getAmount() < 400)
         {
-            //4 marjan sprite
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[2];
+        }
+        else if (getAmount() < 500)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
         }
         else
         {
-            // 5 marjan sprite
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        resources = Random.Range(50, 200);
+        setAmount(Random.Range(50, 200));
         growthspeed = 1;
         StartCoroutine("Grow");
     }
 
     IEnumerator Grow()
     {
-        while (resources < 500)
+        while (getAmount() < 600)
         {
-            resources++;
+            setAmount(getAmount() + 1);
             yield return new WaitForSeconds(growthspeed);
         }
     }

@@ -11,13 +11,13 @@ public class Outcrop : Resource
     // Start is called before the first frame update
     void Start()
     {
-        resources = 0;
+        setAmount(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (resources == 100)
+        if (getAmount() == 100)
         {
             // luo Quarry -olio samaan pisteeseen kartalla ja tuhoa Outcrop -olio
         }
