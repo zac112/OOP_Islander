@@ -25,6 +25,8 @@ public class GroundGenerator : MonoBehaviour
     private int resourceDepth = 0;
     private int houseDepth = -2;
     private int workerDepth = -1;
+
+    private int[] houseCoords;
     /*
      0,1,2
      3,4,5
@@ -34,6 +36,7 @@ public class GroundGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        houseCoords  = new int[]{ ground.GetLength(0) / 2, ground.GetLength(1) / 2 }; 
         for (int i = 1; i < ground.GetLength(0) - 1; i++)
         {
             for (int j = 1; j < ground.GetLength(1) - 1; j++)
@@ -48,7 +51,7 @@ public class GroundGenerator : MonoBehaviour
         createGround();
         createHome();
         createResources();
-
+        
         Destroy(gameObject);
     }
 
@@ -126,6 +129,9 @@ public class GroundGenerator : MonoBehaviour
         {
             for (int j = 1; j < ground.GetLength(1) - 1; j++)
             {
+                if ((i >= houseCoords[0] - 1 && i <= houseCoords[0] + 1) && (j >= houseCoords[1] - 1 && j <= houseCoords[1] + 1))
+                    continue;
+
                 if (ground[i, j] == wood)
                 {
                     spawn(resourceGOs[0], i, j, resourceDepth);
@@ -144,8 +150,8 @@ public class GroundGenerator : MonoBehaviour
 
     private void createHome() {
         ground[ground.GetLength(0) / 2, ground.GetLength(1) / 2] = home;
-        spawn(homeGO, ground.GetLength(0) / 2, ground.GetLength(1) / 2, houseDepth);
-        spawn(workerGO, ground.GetLength(0) / 2, ground.GetLength(1) / 2, workerDepth);
+        spawn(homeGO, houseCoords[0], houseCoords[1], houseDepth);
+        spawn(workerGO, houseCoords[0], houseCoords[1], workerDepth);
     }
     private GameObject spawn(GameObject go, int x, int y, int z) {
         return Instantiate<GameObject>(go, new Vector3(x, y, z), Quaternion.identity);
