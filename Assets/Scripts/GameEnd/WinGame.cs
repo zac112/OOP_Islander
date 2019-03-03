@@ -26,6 +26,7 @@ public class WinGame : MonoBehaviour
 
     private IEnumerator EndGame()
     {
+        EventSystem.EventHappened(EventType.WinMusic);
         float spawnRate = 5f;
         int count = 0;
         while (count < 9)
@@ -44,6 +45,7 @@ public class WinGame : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
         }
         count = 0;
+        EventSystem.EventHappened(EventType.TimePeriodChanged);
         while (count < 150)
         {
             GameObject go = Instantiate<GameObject>(workerPrefab);
