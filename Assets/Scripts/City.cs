@@ -63,8 +63,8 @@ public class City : MonoBehaviour
 
         GameObject go = Instantiate<GameObject>(worker);
         this.workerlista.Add(go);
-
-        go.transform.position = new Vector3();
+        
+        go.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y);
 
         
         this.population++;
