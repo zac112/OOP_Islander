@@ -69,9 +69,9 @@ public class Forest : Resource
     void Start()
     {
         setEventType(EventType.WoodChopped);
-        setAmount(Random.Range(50, 150));
+        setAmount(Random.Range(50, 70));
         isForester = false;
-        growthspeed = 1;
+        growthspeed = 3f;
         StartCoroutine("Grow");
     }
 
