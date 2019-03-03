@@ -13,9 +13,7 @@ public abstract class Resource : MonoBehaviour
 
     public int getAmount()
     {
-        //r.setAmount(ref.getAmount() - extraction);
         return resources;
-
     }
     
     public int extractResource(int amount)

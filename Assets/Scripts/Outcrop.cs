@@ -2,20 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Luokka, joka vaatii collectoreilta 100 puuta ennen kuin Quarry voidaan luoda samaan pisteeseen kartalla
 public class Outcrop : Resource
 {
-    public override void checkExistence()
-    {
-        if (resources < 1)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    public override void refreshSprite()
-    {
-
-    }
+    public override void checkExistence() { }
+    public override void refreshSprite() { }
 
     // Start is called before the first frame update
     void Start()

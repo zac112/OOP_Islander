@@ -14,7 +14,26 @@ public class BerryBush : Resource
 
     public override void refreshSprite()
     {
-
+        if (resources < 100)
+        {
+            //1 marjan sprite
+        }
+        else if (resources < 200)
+        {
+            //2 marjan sprite
+        }
+        else if (resources < 300)
+        {
+            //3 marjan sprite
+        }
+        else if (resources < 400)
+        {
+            //4 marjan sprite
+        }
+        else
+        {
+            // 5 marjan sprite
+        }
     }
 
     // Start is called before the first frame update

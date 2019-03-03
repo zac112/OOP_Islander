@@ -16,7 +16,7 @@ public class Forest : Resource
         }
         else
         {
-            growthspeed = 1;
+            growthspeed = 1f;
         }
     }
 
