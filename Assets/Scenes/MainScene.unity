@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d496a86a17b9d0489876dbf81a4e9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endGame: {fileID: 0}
 --- !u!212 &427384616
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1076,7 +1077,7 @@ PrefabInstance:
     - target: {fileID: 203678261489018089, guid: 530bea3a047bd31458b647c456257c63,
         type: 3}
       propertyPath: musics.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 203678261489018089, guid: 530bea3a047bd31458b647c456257c63,
         type: 3}
@@ -1133,6 +1134,11 @@ PrefabInstance:
       propertyPath: musics.Array.data[10]
       value: 
       objectReference: {fileID: 8300000, guid: 584a9744e24de204abc89d99211a232b, type: 3}
+    - target: {fileID: 203678261489018089, guid: 530bea3a047bd31458b647c456257c63,
+        type: 3}
+      propertyPath: musics.Array.data[11]
+      value: 
+      objectReference: {fileID: 8300000, guid: 515d97e3fc007c24ba400579e4b7e91d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 530bea3a047bd31458b647c456257c63, type: 3}
 --- !u!1 &1968252522

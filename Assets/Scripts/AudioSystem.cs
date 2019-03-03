@@ -28,7 +28,7 @@ public class AudioSystem : MonoBehaviour, IAction
     public void React(EventType type) {
         if (type == EventType.GameStarts)
         {
-            StartCoroutine("GameStartsClip");
+           GameStartsClip();
         }
         if (type == EventType.CitySmall)
         {
@@ -70,32 +70,34 @@ public class AudioSystem : MonoBehaviour, IAction
         {
             WinClip();
         }
+        if (type == EventType.Ultimate)
+        {
+            UltimateClip();
+        }
     }
 
 
-    public IEnumerator GameStartsClip()
+    public void GameStartsClip()
     {
         StartCoroutine("PlayEffect", 6);
-        yield return new WaitForSeconds(2);
-        ac.clip = musics[1];
-        StartCoroutine("FadeIn", 0);
+        StartCoroutine("FadeOutIn", new Timing(1, 1));
         
     }
     public void CitySmallClip()
     {
-        StartCoroutine("FadeOutIn", new Timing(3, 1));
+        StartCoroutine("FadeOutIn", new Timing(2, 1));
     }
     public void CityBigClip()
     {
-        StartCoroutine("FadeOutIn", new Timing(3, 2));
+        StartCoroutine("FadeOutIn", new Timing(1, 2));
     }
     public void HuntingSmallClip()
     {
-        StartCoroutine("FadeOutIn", new Timing(2, 4));
+        StartCoroutine("FadeOutIn", new Timing(1, 3));
     }
     public void HuntingBigClip()
     {
-        StartCoroutine("FadeOutIn", new Timing(2, 5));
+        StartCoroutine("FadeOutIn", new Timing(1, 5));
     }
     public void WoodClip()
     {
@@ -120,6 +122,11 @@ public class AudioSystem : MonoBehaviour, IAction
     public void WinClip()
     {
         StartCoroutine("FadeOutIn", new Timing(1, 10));
+    }
+    public void UltimateClip()
+    {
+        StartCoroutine("FadeOutIn", new Timing(1, 11));
+
     }
     IEnumerator FadeOutIn(Timing t) {
         //yield return FadeOut(t.duration);

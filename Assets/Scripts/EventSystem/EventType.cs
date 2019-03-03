@@ -12,6 +12,7 @@ public enum EventType
     HuntingSmall,
     HuntingBig,
     WinMusic,
+    MenuMusic,
     Ultimate,
     //effects
     WoodChopped, 
