@@ -151,7 +151,7 @@ public class GroundGenerator : MonoBehaviour
     private void createHome() {
         ground[ground.GetLength(0) / 2, ground.GetLength(1) / 2] = home;
         spawn(homeGO, houseCoords[0], houseCoords[1], houseDepth);
-        spawn(workerGO, houseCoords[0], houseCoords[1], workerDepth);
+        homeGO.GetComponent<City>().AddCollector();
     }
     private GameObject spawn(GameObject go, int x, int y, int z) {
         return Instantiate<GameObject>(go, new Vector3(x, y, z), Quaternion.identity);

@@ -14,6 +14,15 @@ public class Collector : MonoBehaviour
     private int max_amount = 10;
 
     [SerializeField]
+    private int Requested_amount;
+
+    [SerializeField]
+    private Resource Requested_resource;
+
+    [SerializeField]
+    private bool OnkoVapaa;
+
+    [SerializeField]
     private int amount;
 
     [SerializeField]
@@ -26,6 +35,8 @@ public class Collector : MonoBehaviour
     [SerializeField]
     private GameObject target_flag;
 
+    [SerializeField]
+    private bool send_to_resource;
     public GameObject flag;
     // Start is called before the first frame update
     void Start()
@@ -33,6 +44,14 @@ public class Collector : MonoBehaviour
         home = GameObject.FindGameObjectWithTag("Home");
     }
 
+    public void SetOnkoVapaa(bool vapaa)
+    {
+        this.OnkoVapaa = vapaa;
+    }
+    public bool tarkistaVapaus()
+    {
+        return this.OnkoVapaa;
+    }
     public void SetTarget(GameObject target)
     {
         this.target = target;
@@ -41,10 +60,18 @@ public class Collector : MonoBehaviour
     {
         this.move_to = target;
     }
-    
+    public Resource getResource()
+    {
+        return this.resource;
+    }
+    public void SetSend_to_resource(bool r)
+    {
+        this.send_to_resource = r;
+    }
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -53,6 +80,16 @@ public class Collector : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null)
             {
+                if (hit.collider.gameObject.tag == "Home")
+                    home.gameObject.GetComponent<City>().AddCollector();
+                if (hit.collider.gameObject.GetComponent<Outcrop>() != null)
+                {
+                    this.send_to_resource = true;
+                }
+                else
+                {
+                    this.send_to_resource = false;
+                }
                 DestroyImmediate(target_flag);
                 target_flag = Instantiate(flag, hit.point, Quaternion.identity);
                 target_flag.GetComponent<Flag>().SetWorker(this.gameObject);
@@ -72,30 +109,51 @@ public class Collector : MonoBehaviour
             if(collision.gameObject.transform.position == target_flag.transform.position) { 
                 if(resource == null)
                 {
-                    /*if(target.GetComponent<Resource>().vie_tavaraa())
+                    if(home.GetComponent<BoxCollider2D>().bounds.Contains(new Vector3(target_flag.transform.position.x, target_flag.transform.position.y,home.transform.position.z)))
                     {
-                        
+                        Destroy(target_flag);
+                    }
+                    else if (send_to_resource && target.GetComponent<Outcrop>())
+                    {
+                        if(this.amount > 0)
+                            target.GetComponent<Outcrop>().setAmount(this.amount);
+                        //Requested_resource = target.GetComponent<Outcrop>();
+                        Requested_amount = target.GetComponent<Outcrop>().stillNeeded();
+                        StartCoroutine("goHome");
                     }
                     else
-                    {*/
+                    {
                         //Amount of resources worker is carrying right now
                         this.amount = target.GetComponent<Resource>().extractResource(this.max_amount);
                         //Gives target resource to resource variable
                         this.resource = this.target.GetComponent<Resource>();
-                    //}
-                   
+                        StartCoroutine("goHome");
+                    }
+
+
                 }
-                StartCoroutine("goHome");
+                else
+                    StartCoroutine("goHome");
             }
         }
-         if (collision.gameObject.tag == "Home" && this.resource != null)
+        if (move_to.gameObject.tag == "Home" && this.resource != null)
         {
-            //resets amount and resource variables
-            collision.gameObject.GetComponent<City>().AddResource(this.resource, this.amount);
-            this.amount = 0;
-            this.resource = null;
-            MoveTo(this.target);
-            
+            if (target.GetComponent<Outcrop>())
+            {
+                /*if(this.Requested_amount < this.max_amount)
+                    this.amount = home.GetComponent<City>().UseResource(, this.Requested_amount);
+                else
+                    this.amount = home.GetComponent<City>().UseResource(, this.max_amount);*/
+            }
+            else
+            {
+
+                //resets amount and resource variables
+                collision.gameObject.GetComponent<City>().AddResource(this.resource, this.amount);
+                this.amount = 0;
+                this.resource = null;
+            }
+            MoveTo(this.target);            
         }
     }
     IEnumerator goHome()
