@@ -60,11 +60,11 @@ public class AudioSystem : MonoBehaviour, IAction
         }
         if (type == EventType.UpgradeBuilt)
         {
-
+            UpgradeClip();
         }
         if (type == EventType.TimePeriodChanged)
         {
-
+            FanfareClip();
         }
         
     }
@@ -105,6 +105,14 @@ public class AudioSystem : MonoBehaviour, IAction
     public void BerryClip()
     {
         StartCoroutine("PlayEffect", 9);
+    }
+    public void UpgradeClip()
+    {
+        StartCoroutine("PlayEffect", 4);
+    }
+    public void FanfareClip()
+    {
+        StartCoroutine("FadeOutIn", new Timing(0, 0));
     }
 
     IEnumerator FadeOutIn(Timing t) {
