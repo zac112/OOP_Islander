@@ -94,6 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wood: 0
+  quarry: {fileID: 6392040089189307514, guid: 7cc2749849aa8ed44822124911f81580, type: 3}
+  neededResource: {fileID: 0}
 --- !u!61 &7985519473791055737
 BoxCollider2D:
   m_ObjectHideFlags: 0

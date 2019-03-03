@@ -17,7 +17,7 @@ public class BerryBush : Resource
 
     private IEnumerator timer()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(30);
         setAmount(500);
         coroutineRunning = false;
 

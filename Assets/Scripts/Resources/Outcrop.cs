@@ -9,9 +9,12 @@ public class Outcrop : MonoBehaviour
     private int wood;
 
     private int woodNeeded = 100;
-    
+
+    [SerializeField]
     private GameObject quarry;
-    public Resource neededResource;
+
+    [SerializeField]
+    private Resource neededResource;
 
     public int getAmount()
     {
