@@ -30,15 +30,19 @@ public class ResourcePool : MonoBehaviour
     /**
      * Kayttaa resurssia maaran X verran
      */
-    public void UseResource(int x)
+    public int UseResource(int x)
     {
+        int otettuMaara = 0;
         if (this.amount - x <= 0)
         {
+            otettuMaara = this.amount;
             this.amount = 0;
+            return otettuMaara;
         }
         else
         {
             this.amount -= x;
+            return x;
         }
     }
     /**

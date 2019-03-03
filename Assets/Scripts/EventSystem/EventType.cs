@@ -10,7 +10,8 @@ public enum EventType
     CitySmall, 
     CityBig, 
     HuntingSmall,
-    HuntingBig, 
+    HuntingBig,
+    WinMusic,
     //effects
     WoodChopped, 
     StoneCut, 
