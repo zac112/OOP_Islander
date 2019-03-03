@@ -141,7 +141,7 @@ public class City : MonoBehaviour
         float y = gameObject.transform.position.y + 1f - lista.Length * 0.5f;
         float z = gameObject.transform.position.z;
         GameObject resrow = Instantiate<GameObject>(resrowPrefab);
-        resrow.GetComponent<ResourceRow>().SetRow(r, x + 1f, y, z);
+        resrow.GetComponent<ResourceRow>().SetRow(r, x - 2f, y, z);
     }
 
     /**
