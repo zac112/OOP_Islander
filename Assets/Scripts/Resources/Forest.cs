@@ -12,42 +12,42 @@ public class Forest : Resource
         isForester = i;
         if (isForester == true)
         {
-            growthspeed = 5f;
+            growthspeed = 3f;
         }
         else
         {
-            growthspeed = 10f;
+            growthspeed = 5f;
         }
     }
 
     public override void refreshSprite()
     {
         if (sprites == null) return;
-        if (getAmount() < 125)
+        if (getAmount() < 25)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[7];
         }
-        else if (getAmount() < 250)
+        else if (getAmount() < 50)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[6];
         }
-        else if (getAmount() < 375)
+        else if (getAmount() < 75)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[5];
         }
-        else if (getAmount() < 500)
+        else if (getAmount() < 100)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[4];
         }
-        else if (getAmount() < 625)
+        else if (getAmount() < 125)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[3];
         }
-        else if (getAmount() < 750)
+        else if (getAmount() < 150)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[2];
         }
-        else if (getAmount() < 875)
+        else if (getAmount() < 175)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
         }
@@ -69,7 +69,7 @@ public class Forest : Resource
     void Start()
     {
         setEventType(EventType.WoodChopped);
-        setAmount(Random.Range(50, 300));
+        setAmount(Random.Range(50, 150));
         isForester = false;
         growthspeed = 1;
         StartCoroutine("Grow");
@@ -77,7 +77,7 @@ public class Forest : Resource
 
     IEnumerator Grow()
     {
-        while (getAmount() < 1000)
+        while (getAmount() < 200)
         {
             setAmount(getAmount() + 1);
             yield return new WaitForSeconds(growthspeed);

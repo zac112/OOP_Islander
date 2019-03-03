@@ -18,7 +18,7 @@ public class BerryBush : Resource
     private IEnumerator timer()
     {
         yield return new WaitForSeconds(600);
-        setAmount(500);
+        setAmount(50);
         coroutineRunning = false;
 
 
@@ -37,19 +37,19 @@ public class BerryBush : Resource
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[5];
         }
-        else if (getAmount() < 100)
+        else if (getAmount() <= 10)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[4];
         }
-        else if (getAmount() < 200)
+        else if (getAmount() <= 20)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[3];
         }
-        else if (getAmount() < 300)
+        else if (getAmount() <= 30)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[2];
         }
-        else if (getAmount() < 400)
+        else if (getAmount() <= 40)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
         }
@@ -63,7 +63,7 @@ public class BerryBush : Resource
     void Start()
     {
         setEventType(EventType.Berrypicked);
-        setAmount(500);
+        setAmount(50);
     }
 
     // Update is called once per frame

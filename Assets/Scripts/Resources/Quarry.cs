@@ -16,23 +16,23 @@ public class Quarry : Resource
     public override void refreshSprite()
     {
         if (sprites == null) return;
-        if (getAmount() < 100)
+        if (getAmount() < 50)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[5];
         }
-        else if (getAmount() < 200)
+        else if (getAmount() < 166)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[4];
         }
-        else if (getAmount() < 300)
+        else if (getAmount() < 333)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[3];
         }
-        else if (getAmount() < 400)
+        else if (getAmount() < 500)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[2];
         }
-        else if (getAmount() < 500)
+        else if (getAmount() < 633)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
         }
@@ -46,7 +46,7 @@ public class Quarry : Resource
     void Start()
     {
         setEventType(EventType.StoneCut);
-        setAmount(Random.Range(2000, 4000));
+        setAmount(Random.Range(500, 800));
     }
 
     // Update is called once per frame
