@@ -80,6 +80,9 @@ public class Collector : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null)
             {
+
+                this.Requested_resource = null;
+                this.Requested_amount = 0;
                 if (hit.collider.gameObject.GetComponent<Outcrop>() != null && hit.collider.gameObject.tag == "Buildable")
                 {
                     this.send_to_resource = true;
@@ -106,18 +109,26 @@ public class Collector : MonoBehaviour
         {
             if(collision.gameObject.transform.position == target_flag.transform.position)
             {
-                if(resource == null)
+
+                if (resource == null)
                 {
-                    if(home.GetComponent<BoxCollider2D>().bounds.Contains(new Vector3(target_flag.transform.position.x, target_flag.transform.position.y,home.transform.position.z)))
+                    if (home.GetComponent<BoxCollider2D>().bounds.Contains(new Vector3(target_flag.transform.position.x, target_flag.transform.position.y,home.transform.position.z)))
                     {
                         Destroy(target_flag);
+                        this.resource = null;
+                        this.amount = 0;
                     }
                     else if (send_to_resource && target.GetComponent<Outcrop>() && target.tag == "Buildable")
                     {
-                        if(this.amount > 0)
+                        if(this.amount > 0) { }
                             target.GetComponent<Outcrop>().addResource(this.amount);
                         Requested_resource = target.GetComponent<Outcrop>().getNeededResource();
                         Requested_amount = target.GetComponent<Outcrop>().stillNeeded();
+                        if (this.Requested_amount == 0)
+                        {
+                            this.Requested_resource = null;
+                            this.target = null;
+                        }
                         StartCoroutine("goHome");
                     }
                     else
@@ -149,13 +160,12 @@ public class Collector : MonoBehaviour
                     }
                     else
                     {
-
                         //resets amount and resource variables
                         collision.gameObject.GetComponent<City>().AddResource(this.resource, this.amount);
                         this.amount = 0;
-                        this.resource = null;
                     }
 
+                    this.resource = null;
                     MoveTo(this.target);
                 }
             }
