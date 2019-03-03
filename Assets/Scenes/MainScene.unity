@@ -274,6 +274,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 203678261489018089, guid: 530bea3a047bd31458b647c456257c63,
+        type: 3}
+      propertyPath: musics.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 203678261489018089, guid: 530bea3a047bd31458b647c456257c63,
+        type: 3}
+      propertyPath: musics.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 117f35b9a9c960540ae24eea2bf3ea27, type: 3}
+    - target: {fileID: 203678261489018089, guid: 530bea3a047bd31458b647c456257c63,
+        type: 3}
+      propertyPath: musics.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1b51dbf8319818449ab62be8d9450e31, type: 3}
+    - target: {fileID: 203678261489018089, guid: 530bea3a047bd31458b647c456257c63,
+        type: 3}
+      propertyPath: musics.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: 86208dc8a75ffb24ebab218e12d74c9a, type: 3}
+    - target: {fileID: 203678261489018089, guid: 530bea3a047bd31458b647c456257c63,
+        type: 3}
+      propertyPath: musics.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2edad0f30cce2dc47a11eee3baf3118a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 530bea3a047bd31458b647c456257c63, type: 3}
 --- !u!1001 &5792638251041000132

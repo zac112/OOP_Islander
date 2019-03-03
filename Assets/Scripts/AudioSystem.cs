@@ -10,8 +10,10 @@ public class AudioSystem : MonoBehaviour, IAction
     private List<AudioClip> musics = new List<AudioClip>();
 
     [SerializeField]
-    private AudioSource ac;
+    private AudioSource ac = null;
+    
     // Start is called before the first frame update
+    
     void Start()
     {
 
@@ -22,12 +24,7 @@ public class AudioSystem : MonoBehaviour, IAction
         React(EventType.GameStarts);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void React(EventType type) {
         if (type == EventType.GameStarts)
         {
@@ -51,18 +48,32 @@ public class AudioSystem : MonoBehaviour, IAction
         }
         if (type == EventType.WoodChopped)
         {
-            
+            WoodClip();
         }
         if (type == EventType.StoneCut)
         {
-            
+            StoneClip();
         }
+        if (type == EventType.Berrypicked)
+        {
+            BerryClip();
+        }
+        if (type == EventType.UpgradeBuilt)
+        {
+
+        }
+        if (type == EventType.TimePeriodChanged)
+        {
+
+        }
+        
     }
 
 
     public void GameStartsClip()
     {
-        StartCoroutine("FadeOutIn", new Timing(0,0));
+        StartCoroutine("FadeOutIn", new Timing(2,1));
+        StartCoroutine("PlayEffect", 6);
     }
     public void CitySmallClip()
     {
@@ -79,6 +90,18 @@ public class AudioSystem : MonoBehaviour, IAction
     public void HuntingBigClip()
     {
         StartCoroutine("FadeOutIn", new Timing(2, 6));
+    }
+    public void WoodClip()
+    {
+        StartCoroutine("PlayEffect", 7);
+    }
+    public void StoneClip()
+    {
+        StartCoroutine("PlayEffect", 8);
+    }
+    public void BerryClip()
+    {
+        StartCoroutine("PlayEffect", 9);
     }
 
     IEnumerator FadeOutIn(Timing t) {
@@ -115,13 +138,20 @@ public class AudioSystem : MonoBehaviour, IAction
         {
             float current = Time.time - start;
             //(max-current)/(max-min)
-            float volume = (end - Time.time) / (end - start);
+            float volume = (Time.time - start) / (end - start);
             yield return null;
             ac.volume = volume;
         }
         ac.volume = 1;
     }
-
+    public IEnumerator PlayEffect(int clip)
+    {
+        AudioSource v = gameObject.AddComponent<AudioSource>();
+        v.clip = musics[clip];
+        v.Play();
+        yield return new WaitForSeconds(v.clip.length + 1);
+        Destroy(v);
+    }
 
 
 

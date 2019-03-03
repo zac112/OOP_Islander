@@ -119,3 +119,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb94cfa918a502245a4097b1749281ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resources: 0
+  sprites:
+  - {fileID: 21300000, guid: c6be499253804b13b9d479f7394d8bd4, type: 3}
+  - {fileID: 21300002, guid: c6be499253804b13b9d479f7394d8bd4, type: 3}
+  - {fileID: 21300004, guid: c6be499253804b13b9d479f7394d8bd4, type: 3}
+  - {fileID: 21300006, guid: c6be499253804b13b9d479f7394d8bd4, type: 3}
+  - {fileID: 21300008, guid: c6be499253804b13b9d479f7394d8bd4, type: 3}
+  - {fileID: 21300010, guid: c6be499253804b13b9d479f7394d8bd4, type: 3}
+  - {fileID: 21300012, guid: c6be499253804b13b9d479f7394d8bd4, type: 3}
+  - {fileID: 21300014, guid: c6be499253804b13b9d479f7394d8bd4, type: 3}

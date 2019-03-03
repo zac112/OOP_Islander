@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 548039319383633028}
   - component: {fileID: 548039319383633031}
   m_Layer: 0
-  m_Name: Worker
+  m_Name: worker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   home: {fileID: 7607310651946833762, guid: 118ed7528555d45418acb5a87b330000, type: 3}
   resource: {fileID: 0}
   speed: 1
+  flag: {fileID: 8796312832300166883, guid: 5cba37404bc15114b929eea3f4ec84f3, type: 3}
 --- !u!61 &548039319383633028
 BoxCollider2D:
   m_ObjectHideFlags: 0

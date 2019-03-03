@@ -7,7 +7,7 @@ public class ResourceCapacityUpgrade : Upgrade
     // Start is called before the first frame update
     void Start()
     {
-
+        maxLevelModifier = 4;
     }
 
     // Update is called once per frame
@@ -21,9 +21,13 @@ public class ResourceCapacityUpgrade : Upgrade
         UpgradeTargets target = UpgradeTargets.capacity;
         City city = gameObject.GetComponent<City>();
         int currentLevel = city.GetLevel(target);
-        city.UseResources((GetPrices(currentLevel)));
-        city.IncreaseCapacity(currentLevel * 100);
-        Debug.Log("Capacity upgraded");
+
+        if (currentLevel <= city.GetLevel(UpgradeTargets.city) * maxLevelModifier)
+        {
+            city.UseResources((GetPrices(currentLevel)));
+            city.IncreaseCapacity(currentLevel * 100);
+            Debug.Log("Capacity upgraded");
+        }
     }
 
 }

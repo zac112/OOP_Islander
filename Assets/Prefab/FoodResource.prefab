@@ -93,6 +93,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5bb155b8732f34994d234d1a214353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: f85d51a973c87b04692395ace7bbb53d, type: 3}
+  - {fileID: 21300002, guid: f85d51a973c87b04692395ace7bbb53d, type: 3}
+  - {fileID: 21300004, guid: f85d51a973c87b04692395ace7bbb53d, type: 3}
+  - {fileID: 21300006, guid: f85d51a973c87b04692395ace7bbb53d, type: 3}
+  - {fileID: 21300008, guid: f85d51a973c87b04692395ace7bbb53d, type: 3}
+  - {fileID: 21300010, guid: f85d51a973c87b04692395ace7bbb53d, type: 3}
 --- !u!61 &5070108541231774712
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -4,18 +4,35 @@ using UnityEngine;
 
 public abstract class Resource : MonoBehaviour
 {
-    protected int resources;
+    [SerializeField]
+    private int resources;
 
-    public void setAmount(int i)
+    [SerializeField]
+    private bool resourceSource;
+
+    [SerializeField]
+    protected Sprite[] sprites;
+
+    public bool isResourceSource()
+    {
+        return resourceSource;
+    }
+
+    public void setResourceSource(bool i)
+    {
+        resourceSource = i;
+    }
+
+    public virtual void setAmount(int i)
     {
         resources = i;
+        refreshSprite();
+        checkExistence();
     }
 
     public int getAmount()
     {
-        //r.setAmount(ref.getAmount() - extraction);
         return resources;
-
     }
     
     public int extractResource(int amount)
@@ -23,16 +40,12 @@ public abstract class Resource : MonoBehaviour
         if (resources-amount < 0)
         {
             int r = resources;
-            resources = 0;
-            refreshSprite();
-            checkExistence();
+            setAmount(0);
             return r;
         }
         else
         {
-            resources = resources - amount;
-            refreshSprite();
-            checkExistence();
+            setAmount(resources - amount);
             return amount;
         }
       

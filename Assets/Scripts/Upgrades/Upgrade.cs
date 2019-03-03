@@ -4,14 +4,16 @@ using UnityEngine;
 
 public abstract class Upgrade : MonoBehaviour
 {
-    /*
-    private float baseWoodCost = 10;
-    private float baseStoneCost = 10;
-    private float baseFoodCost = 10;
-    */
+    protected int maxLevelModifier;
+
     private float efficiencyLevel = 1;
 
-    private Dictionary<Resources, int> resources = new Dictionary<Resources, int>();
+    private Dictionary<Resource, int> resources = new Dictionary<Resource, int>()
+    {
+        { null , 1},
+        { null , 1},
+        { null , 0},
+    };
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +63,7 @@ public abstract class Upgrade : MonoBehaviour
     public List<int> GetPrices(float modifier)
     {
         List<int> prices = new List<int>();
-        foreach(KeyValuePair<Resources, int> key in resources)
+        foreach(KeyValuePair<Resource, int> key in resources)
         {
             prices.Add((int) (key.Value * modifier * 50 * GetEfficiency()));
         }
