@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 548039319383633026}
   - component: {fileID: 548039319383633027}
+  - component: {fileID: 6298442855940817967}
   - component: {fileID: 548039319383633029}
   - component: {fileID: 548039319383633028}
   - component: {fileID: 548039319383633031}
@@ -82,6 +83,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6298442855940817967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548039319383633024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266b3ace213eb154d80f94023b63eabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 488af5ae9ee5f2e48b2879b969ebc0a1, type: 3}
+  - {fileID: 21300002, guid: 488af5ae9ee5f2e48b2879b969ebc0a1, type: 3}
+  - {fileID: 21300004, guid: 488af5ae9ee5f2e48b2879b969ebc0a1, type: 3}
+  - {fileID: 21300006, guid: 488af5ae9ee5f2e48b2879b969ebc0a1, type: 3}
+  - {fileID: 21300008, guid: 488af5ae9ee5f2e48b2879b969ebc0a1, type: 3}
+  - {fileID: 21300010, guid: 488af5ae9ee5f2e48b2879b969ebc0a1, type: 3}
+  - {fileID: 21300012, guid: 488af5ae9ee5f2e48b2879b969ebc0a1, type: 3}
+  - {fileID: 21300014, guid: 488af5ae9ee5f2e48b2879b969ebc0a1, type: 3}
 --- !u!114 &548039319383633029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,10 +119,15 @@ MonoBehaviour:
   target: {fileID: 0}
   move_to: {fileID: 0}
   max_amount: 10
+  Requested_amount: 0
+  Requested_resource: {fileID: 0}
+  OnkoVapaa: 0
   amount: 0
   home: {fileID: 7607310651946833762, guid: 118ed7528555d45418acb5a87b330000, type: 3}
   resource: {fileID: 0}
   speed: 1
+  target_flag: {fileID: 0}
+  send_to_resource: 0
   flag: {fileID: 8796312832300166883, guid: 5cba37404bc15114b929eea3f4ec84f3, type: 3}
 --- !u!61 &548039319383633028
 BoxCollider2D:

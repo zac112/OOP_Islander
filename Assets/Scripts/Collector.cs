@@ -44,6 +44,9 @@ public class Collector : MonoBehaviour
         home = GameObject.FindGameObjectWithTag("Home");
     }
 
+    public GameObject GetMoveToTarget() {
+        return move_to;
+    }
     public void SetOnkoVapaa(bool vapaa)
     {
         this.OnkoVapaa = vapaa;
