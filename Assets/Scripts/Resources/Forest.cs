@@ -60,7 +60,7 @@ public class Forest : Resource
     {
         if (getAmount() < 1)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

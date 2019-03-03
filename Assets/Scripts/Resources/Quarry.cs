@@ -9,7 +9,7 @@ public class Quarry : Resource
     {
         if (getAmount() < 1)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
