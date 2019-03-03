@@ -140,16 +140,16 @@ public class Collector : MonoBehaviour
             {
                 if (collision.gameObject.GetComponent<BoxCollider2D>().bounds.Contains(new Vector3(home.transform.position.x, home.transform.position.y, collision.gameObject.transform.position.z)))
                 {
-                    if (target != null && target.GetComponent<Outcrop>() && this.Requested_resource != null)
+                    if (target.GetComponent<Outcrop>() && this.Requested_resource != null)
                     {
                         if(this.Requested_amount < this.max_amount)
                             this.amount = home.GetComponent<City>().UseResource(this.Requested_resource, this.Requested_amount);
                         else
                             this.amount = home.GetComponent<City>().UseResource(this.Requested_resource, this.max_amount);
                     }
-                    else if (collision.gameObject.GetComponent<City>() != null)
+                    else
                     {
-                        
+
                         //resets amount and resource variables
                         collision.gameObject.GetComponent<City>().AddResource(this.resource, this.amount);
                         this.amount = 0;
