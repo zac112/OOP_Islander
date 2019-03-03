@@ -6,6 +6,9 @@ using UnityEngine;
 public class City : MonoBehaviour
 {
     [SerializeField]
+    List<GameObject> workerlista;
+
+    [SerializeField]
     GameObject worker;
 
     [SerializeField]
@@ -20,16 +23,18 @@ public class City : MonoBehaviour
     [SerializeField]
     public int roadLevel = 0;
 
-    [SerializeField]
-    public int collectorLevel = 0;
 
     
     // Start is called before the first frame update
     void Start()
     {
         
+        
     }
 
+    /**
+     * Palauttaa kysytyn targetin levelin
+     */
     public int GetLevel(UpgradeTargets target)
     {
         switch (target)
@@ -41,7 +46,7 @@ public class City : MonoBehaviour
             case UpgradeTargets.speed:
                 return this.roadLevel;
             case UpgradeTargets.collector:
-                return this.collectorLevel;
+                return this.workerlista.Count;
             default:
                 Debug.Log("Default");
                 return -1;
@@ -50,12 +55,19 @@ public class City : MonoBehaviour
         return 1;
     }
 
+    /**
+     * Lisaa uuden collecotrin
+     */
     public void AddCollector()
     {
 
         GameObject go = Instantiate<GameObject>(worker);
+        this.workerlista.Add(go);
 
         go.transform.position = new Vector3();
+
+        
+        this.population++;
     }
 
 
