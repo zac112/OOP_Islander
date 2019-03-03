@@ -8,17 +8,21 @@ public class CollectorUpgrade : Upgrade
     // Start is called before the first frame update
     void Start()
     {
-
-        UpgradeTargets target = UpgradeTargets.collector;
-        City city = gameObject.GetComponent<City>();
-        int currentLevel = city.GetLevel(target);
-        city.UseResources(GetPrices(currentLevel));
-        city.AddCollector();
+        maxLevelModifier = 4;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void UpgradeCollector()
+    {
+        UpgradeTargets target = UpgradeTargets.collector;
+        City city = gameObject.GetComponent<City>();
+        int currentLevel = city.GetLevel(target);
+        city.UseResources(GetPrices(currentLevel));
+        city.AddCollector();
     }
 }

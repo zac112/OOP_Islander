@@ -7,7 +7,7 @@ public class PopulationUpgrade : Upgrade
     // Start is called before the first frame update
     public void Start()
     {
-        
+        maxLevelModifier = 10;
     }
 
     // Update is called once per frame

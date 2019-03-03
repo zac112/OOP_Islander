@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class RoadUpgrade : Upgrade
 {
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        maxLevelModifier = 2;
     }
 
     // Update is called once per frame
