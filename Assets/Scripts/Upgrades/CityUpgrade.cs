@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceCapacityUpgrade : Upgrade
+public class CityUpgrade : Upgrade
 {
     // Start is called before the first frame update
     void Start()
     {
-        maxLevelModifier = 4;
+        
     }
 
     // Update is called once per frame
@@ -16,14 +16,17 @@ public class ResourceCapacityUpgrade : Upgrade
         
     }
 
-    public void UpgradeCapacity()
+    public void UpgradeCity()
     {
-        UpgradeTargets target = UpgradeTargets.capacity;
+
+        UpgradeTargets target = UpgradeTargets.city;
         City city = gameObject.GetComponent<City>();
         int currentLevel = city.GetLevel(target);
-        city.UseResources((GetPrices(currentLevel)));
-        city.IncreaseCapacity(currentLevel * 100);
-        Debug.Log("Capacity upgraded");
-    }
 
+        if (city.GetLevel(UpgradeTargets.population) >= 5) {
+            city.UseResources(GetPrices(currentLevel * 10));
+        //    city.IncreaseCityLevel();  currently not implemented in City
+        }
+        
+    }
 }

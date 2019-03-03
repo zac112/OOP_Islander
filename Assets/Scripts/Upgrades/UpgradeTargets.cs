@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum UpgradeTargets
-    {population, capacity, speed, collector}
+    {population, capacity, speed, collector, city}
 

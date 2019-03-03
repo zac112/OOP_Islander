@@ -4,11 +4,8 @@ using UnityEngine;
 
 public abstract class Upgrade : MonoBehaviour
 {
-    /*
-    private float baseWoodCost = 10;
-    private float baseStoneCost = 10;
-    private float baseFoodCost = 10;
-    */
+    protected int maxLevelModifier;
+
     private float efficiencyLevel = 1;
 
     private Dictionary<Resources, int> resources = new Dictionary<Resources, int>();
