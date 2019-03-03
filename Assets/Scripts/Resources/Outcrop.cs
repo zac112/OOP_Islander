@@ -37,7 +37,7 @@ public class Outcrop : MonoBehaviour
         {
             GameObject go = Instantiate<GameObject>(quarry);
             go.transform.position = this.transform.position;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
