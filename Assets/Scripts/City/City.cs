@@ -6,6 +6,12 @@ using UnityEngine;
 public class City : MonoBehaviour
 {
     [SerializeField]
+    GameObject respanelPrefab;
+
+    [SerializeField]
+    GameObject resrowPrefab;
+
+    [SerializeField]
     List<GameObject> workerlista;
 
     [SerializeField]
@@ -23,8 +29,10 @@ public class City : MonoBehaviour
     [SerializeField]
     public int roadLevel = 0;
 
+    public int paneelienmaara = 0;
 
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -107,12 +115,12 @@ public class City : MonoBehaviour
 */
     public void AddResource(Resource r, int amount)
     {
-        if (amount<0)
+        if (amount < 0)
         {
             return;
         }
         ResourcePool[] lista = gameObject.GetComponents<ResourcePool>();
-       
+
         for (int i = 0; i < lista.Length; i++)
         {
             if (lista[i].GetResource().GetType().Equals(r.GetType()))
@@ -124,6 +132,16 @@ public class City : MonoBehaviour
         ResourcePool respool = gameObject.AddComponent<ResourcePool>();
         respool.SetResource(r);
         respool.AddResource(amount);
+        if (paneelienmaara == 0)
+        {
+            GameObject respanel = Instantiate<GameObject>(respanelPrefab);
+            paneelienmaara++;
+        }
+        float x = gameObject.transform.position.x;
+        float y = gameObject.transform.position.y + 1f - lista.Length * 0.5f;
+        float z = gameObject.transform.position.z;
+        GameObject resrow = Instantiate<GameObject>(resrowPrefab);
+        resrow.GetComponent<ResourceRow>().SetRow(r, x - 2f, y, z);
     }
 
     /**

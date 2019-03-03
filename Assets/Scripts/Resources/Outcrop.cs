@@ -8,13 +8,13 @@ public class Outcrop : MonoBehaviour
     [SerializeField]
     private int wood;
 
-    private int woodNeeded = 100;
+    private readonly int woodNeeded = 100;
 
     [SerializeField]
-    private GameObject quarry;
+    private GameObject quarry =null;
 
     [SerializeField]
-    private Resource neededResource;
+    private Resource neededResource =null;
 
     public Resource getNeededResource()
     {
@@ -28,12 +28,12 @@ public class Outcrop : MonoBehaviour
 
     public void setAmount(int amount)
     {
-        wood += amount;
+        wood = amount;
     }
 
     public void checkExistence()
     {
-        if (getAmount() >= 100)
+        if (getAmount() >= woodNeeded)
         {
             GameObject go = Instantiate<GameObject>(quarry);
             go.transform.position = this.transform.position;
@@ -45,12 +45,11 @@ public class Outcrop : MonoBehaviour
     {
         setAmount(getAmount() + amount);
         checkExistence();
-        woodNeeded -= getAmount();
     }
 
     public int stillNeeded()
     {
-        return woodNeeded;
+        return woodNeeded-wood;
     }
 
     // Start is called before the first frame update

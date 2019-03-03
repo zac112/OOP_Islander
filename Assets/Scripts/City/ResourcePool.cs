@@ -14,6 +14,17 @@ public class ResourcePool : MonoBehaviour
     [SerializeField]
     private int maxCapacity = 100;
 
+    private int oneBar = 25;
+
+    private Sprite icon;
+
+    public int CalcBars()
+    {
+        return maxCapacity / oneBar;
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +32,7 @@ public class ResourcePool : MonoBehaviour
     public void SetResource(Resource r)
     {
         this.r = r;
+        icon = r.getResourceImg();
     }
 
     public Resource GetResource()
