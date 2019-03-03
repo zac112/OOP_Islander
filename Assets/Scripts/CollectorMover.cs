@@ -27,7 +27,6 @@ public class CollectorMover : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         angle += 22.5f;
             
-        Debug.Log(angle);
         Destroy(go);
         SpriteRenderer rd = gameObject.GetComponent<SpriteRenderer>();
         if(angle > -180 && angle < -135f)
