@@ -111,6 +111,15 @@ public class City : MonoBehaviour
         spriteIndex = Math.Min(spriteIndex+1, sprites.Length-1);
         this.population += v;
         gameObject.GetComponent<SpriteRenderer>().sprite = sprites[spriteIndex];
+
+        if(spriteIndex == 1)
+            EventSystem.EventHappened(EventType.CityBig);
+        else if (spriteIndex == 2)
+            EventSystem.EventHappened(EventType.HuntingSmall);
+        else if (spriteIndex == 3)
+            EventSystem.EventHappened(EventType.HuntingBig);
+        else if (spriteIndex == 4)
+            EventSystem.EventHappened(EventType.Ultimate);
     }
 
     private void Update()
