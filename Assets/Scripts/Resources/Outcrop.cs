@@ -7,6 +7,8 @@ public class Outcrop : MonoBehaviour
 {
     [SerializeField]
     private int wood;
+
+    private int woodNeeded = 100;
     
     private GameObject quarry;
 
@@ -34,6 +36,12 @@ public class Outcrop : MonoBehaviour
     {
         setAmount(getAmount() + amount);
         checkExistence();
+        woodNeeded -= getAmount();
+    }
+
+    public int stillNeeded()
+    {
+        return woodNeeded;
     }
 
     // Start is called before the first frame update

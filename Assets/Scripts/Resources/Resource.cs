@@ -13,6 +13,18 @@ public abstract class Resource : MonoBehaviour
     [SerializeField]
     protected Sprite[] sprites;
 
+    private EventType type;
+
+    public void setEventType(EventType e)
+    {
+        type = e;
+    }
+
+    public EventType getEventType()
+    {
+        return type;
+    }
+
     public Sprite getResourceImg()
     {
         return resourceImg;
@@ -32,6 +44,7 @@ public abstract class Resource : MonoBehaviour
     
     public int extractResource(int amount)
     {
+        EventSystem.EventHappened(getEventType());
         if (resources-amount < 0)
         {
             int r = resources;
@@ -43,7 +56,6 @@ public abstract class Resource : MonoBehaviour
             setAmount(resources - amount);
             return amount;
         }
-      
     }
 
     public abstract void refreshSprite();

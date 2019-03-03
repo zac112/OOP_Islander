@@ -67,7 +67,7 @@ public class Forest : Resource
     // Start is called before the first frame update
     void Start()
     {
-
+        setEventType(EventType.WoodChopped);
         setAmount(Random.Range(50, 300));
         isForester = false;
         growthspeed = 1;
