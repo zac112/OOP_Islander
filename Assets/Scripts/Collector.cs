@@ -78,7 +78,7 @@ public class Collector : MonoBehaviour
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null)
+            if (hit.collider != null && hit.collider.gameObject != null)
             {
 
                 this.Requested_resource = null;
@@ -133,10 +133,13 @@ public class Collector : MonoBehaviour
                     }
                     else
                     {
-                        //Amount of resources worker is carrying right now
-                        this.amount = target.GetComponent<Resource>().extractResource(this.max_amount);
-                        //Gives target resource to resource variable
-                        this.resource = this.target.GetComponent<Resource>();
+                        if(target != null)
+                        {
+                            //Amount of resources worker is carrying right now
+                            this.amount = target.GetComponent<Resource>().extractResource(this.max_amount);
+                            //Gives target resource to resource variable
+                            this.resource = this.target.GetComponent<Resource>();
+                        }
                         StartCoroutine("goHome");
                     }
 
