@@ -75,20 +75,22 @@ public class City : MonoBehaviour
      *  Kayttaa resurssia r, maaran 'amount' verran (amount >= 0).
      *  Voidaan kayttaa maximissaan sen verran resursseja mita niita on kaytossa.
      */
-    public void UseResource(Resource r, int amount)
+    public int UseResource(Resource r, int amount)
     {
         if (amount<0)
         {
-            return;
+            return 0;
         }
+        int otettuMaara = 0;
         ResourcePool[] lista = gameObject.GetComponents<ResourcePool>();
         for (int i = 0; i < lista.Length; i++)
         {
             if (lista[i].GetResource().GetType().Equals(r.GetType()))
             {
-                lista[i].UseResource(amount);
+                otettuMaara = lista[i].UseResource(amount);
             }
         }
+        return otettuMaara;
     }
 
     public void AddPopulation(int v)
@@ -144,5 +146,13 @@ public class City : MonoBehaviour
         {
             UseResource(lista[i].GetResource(), a[0]);
         }
+    }
+    public List<GameObject> GetWorkerList()
+    {
+        return workerlista;
+    }
+    public void OnMouseDown()
+    {
+        AddCollector();
     }
 }
