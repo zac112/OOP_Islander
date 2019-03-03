@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    
     [SerializeField]
     private GameObject target;
 
     [SerializeField]
     private GameObject move_to;
 
+    [SerializeField]
+    private int max_amount = 10;
 
     [SerializeField]
     private int amount;
@@ -23,8 +19,15 @@ public class Collector : MonoBehaviour
     [SerializeField]
     private GameObject home;
 
+    [SerializeField]
+    private Resource resource;
     public float speed = 1;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        home = GameObject.FindGameObjectWithTag("Home");
+    }
 
     public void SetTarget(GameObject target)
     {
@@ -34,9 +37,7 @@ public class Collector : MonoBehaviour
     {
         this.move_to = target;
     }
-    GameObject lastClicked;
-    Ray ray;
-    RaycastHit rayHit;
+
     // Update is called once per frame
     void Update()
     {
@@ -53,19 +54,33 @@ public class Collector : MonoBehaviour
             }
         }
         if (target != null)
-            transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), move_to.transform.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, transform.position.y, -1f), move_to.transform.position, speed * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
+
         if (collision.gameObject.tag == "Resource")
+        {
+            //Amount of resources worker is carrying right now
+            this.amount = collision.gameObject.GetComponent<Resource>().extractResource(this.max_amount);
+            //Gives target resource to resource variable
+            this.resource = this.target.GetComponent<Resource>();
             StartCoroutine("goHome");
-        else if (collision.gameObject.name == "City")
+        }
+        else if (collision.gameObject.name == "City" && this.resource != null)
+        {
+            //resets amount and resource variables
+            collision.gameObject.GetComponent<City>().AddResource(this.resource, this.amount);
+            this.amount = 0;
+            this.resource = null;
             MoveTo(this.target);
+            
+        }
     }
     IEnumerator goHome()
     {
         yield return new WaitForSeconds(4);
         MoveTo(home);
     }
+
 }

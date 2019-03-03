@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5792638249394901076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5792638249394901078}
+  - component: {fileID: 5792638249394901077}
+  m_Layer: 0
+  m_Name: GroundGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5792638249394901078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5792638249394901076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.0004299, y: -1.7924647, z: 0.08666992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5792638249394901077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5792638249394901076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c4e830c0ab41b43857c747422e6d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 7845060568777686027, guid: dc06b2ea665197f409f486ac4338d8c9, type: 3}
+  - {fileID: 1051228193576912405, guid: f391a591d8e61074890b7ef9e12a966c, type: 3}
+  - {fileID: 26374606591180746, guid: 039d80244b3d8b8468d157c4768ad5b7, type: 3}
+  - {fileID: 6337085622926211289, guid: 66f181d23ac7f6d4482cec95cb79dfdf, type: 3}
+  - {fileID: 4008814432236216736, guid: 5c624548d5c64044293ca879c315162c, type: 3}
+  - {fileID: 9208349072292673665, guid: d8e2eca8422d442468c92e4280e45dca, type: 3}
+  - {fileID: 5082342601233895361, guid: 2d856fc42734c3b409b7519154befc64, type: 3}
+  - {fileID: 5006859973877484677, guid: 968a0a84fdba6b94b9d78f3c1163dfc8, type: 3}
+  - {fileID: 4464150565554338606, guid: 4f69264926c071b4bb32d041aa28d211, type: 3}
+  resourceGOs:
+  - {fileID: 3917056544714409889, guid: 01c364ebfc67d2c448bff8e94d6a73e4, type: 3}
+  - {fileID: 7205059401526678128, guid: 8a7319b0cfb1b554a8dd101ad4e060be, type: 3}
+  - {fileID: 7666959473089792538, guid: 3d8a1dd57f0015c4093d8bfb80c3c303, type: 3}
+  homeGO: {fileID: 7607310651946833762, guid: 118ed7528555d45418acb5a87b330000, type: 3}
+  workerGO: {fileID: 548039319383633024, guid: 7dc194a2047a39340a91ca7636a56290, type: 3}
