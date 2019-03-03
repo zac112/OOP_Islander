@@ -7,7 +7,7 @@ public class ResourceEfficiencyUpgrade : Upgrade
     // Start is called before the first frame update
     void Start()
     {
-        
+        maxLevelModifier = 5;
     }
 
     // Update is called once per frame
@@ -19,8 +19,11 @@ public class ResourceEfficiencyUpgrade : Upgrade
     public void UpgradeEfficiency()
     {
         City city = gameObject.GetComponent<City>();
-        IncreaseEfficiencyLevel();
-        city.UseResources(GetPrices(GetEfficiencyLevel() * GetEfficiencyLevel()));
-        Debug.Log("Efficienfy upgraded to: " + GetEfficiencyLevel());
+        if (GetEfficiencyLevel() <= maxLevelModifier)
+        {
+            IncreaseEfficiencyLevel();
+            city.UseResources(GetPrices(GetEfficiencyLevel() * GetEfficiencyLevel()));
+            Debug.Log("Efficienfy upgraded to: " + GetEfficiencyLevel());
+        }
     }
 }

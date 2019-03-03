@@ -22,7 +22,11 @@ public class CollectorUpgrade : Upgrade
         UpgradeTargets target = UpgradeTargets.collector;
         City city = gameObject.GetComponent<City>();
         int currentLevel = city.GetLevel(target);
-        city.UseResources(GetPrices(currentLevel));
-        city.AddCollector();
+
+        if (currentLevel <= city.GetLevel(UpgradeTargets.city) * maxLevelModifier)
+        {
+            city.UseResources(GetPrices(currentLevel));
+            city.AddCollector();
+        }
     }
 }
