@@ -89,7 +89,7 @@ public class AudioSystem : MonoBehaviour, IAction
     }
     public void HuntingBigClip()
     {
-        StartCoroutine("FadeOutIn", new Timing(2, 6));
+        StartCoroutine("FadeOutIn", new Timing(2, 5));
     }
     public void WoodClip()
     {
