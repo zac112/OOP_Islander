@@ -11,6 +11,7 @@ public class Outcrop : MonoBehaviour
     private int woodNeeded = 100;
     
     private GameObject quarry;
+    public Resource neededResource;
 
     public int getAmount()
     {
@@ -48,6 +49,9 @@ public class Outcrop : MonoBehaviour
     void Start()
     {
         setAmount(0);
+        GameObject go = new GameObject();
+        neededResource = go.AddComponent<Forest>();
+        neededResource.enabled = false;
     }
 
     // Update is called once per frame

@@ -74,12 +74,6 @@ public class Forest : Resource
         StartCoroutine("Grow");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator Grow()
     {
         while (getAmount() < 1000)

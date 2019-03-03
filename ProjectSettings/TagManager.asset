@@ -8,6 +8,8 @@ TagManager:
   - Tree
   - Resource
   - Home
+  - Flag
+  - Buildable
   layers:
   - Default
   - TransparentFX
