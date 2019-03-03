@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5733991913862907517}
   - component: {fileID: 7985519473791055737}
   m_Layer: 0
-  m_Name: StoneResource
-  m_TagString: Resource
+  m_Name: Outcrop
+  m_TagString: Buildable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wood: 0
-  quarry: {fileID: 0}
 --- !u!61 &7985519473791055737
 BoxCollider2D:
   m_ObjectHideFlags: 0
