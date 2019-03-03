@@ -4,14 +4,17 @@ using UnityEngine;
 
 public enum EventType
 {
-    GameStarts, //music
-    TimePeriodChanged, // music
-    CitySmall, //music
-    CityBig, //music
-    WoodChopped, //effect
-    StoneCut, //effect
-    HuntingSmall, //music
-    HuntingBig, //music
-    UpgradeBuilt //effect
+    //music
+    GameStarts, 
+    TimePeriodChanged, 
+    CitySmall, 
+    CityBig, 
+    HuntingSmall,
+    HuntingBig, 
+    //effects
+    WoodChopped, 
+    StoneCut, 
+    Berrypicked,
+    UpgradeBuilt
 
 }
