@@ -107,7 +107,19 @@ public class City : MonoBehaviour
         this.population += v;
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.S))
+        {
+            GameObject go = new GameObject();
+            Quarry q = go.AddComponent<Quarry>();
+           
+            AddResource(q, 4000);
+            AddResource(go.AddComponent<Forest>(), 4000);
+            AddResource(go.AddComponent<BerryBush>(), 4000);
 
+        }
+    }
     /** 
 *  Lisaa resurssia r, maaran 'amount' verran (amount >= 0).
 *  Voidaan lisata maximissaan resurssin maximikapasiteettiin asti,
@@ -163,10 +175,11 @@ public class City : MonoBehaviour
                 {
                     for(int k = 0; k<resurssit.Count; k++)
                     {
-                        if(resurssit[k].GetType().Equals(lista[i].GetType()))
-                            resurssit.Remove(poolit[j].GetResource());
+                        if (resurssit[k].GetType().Equals(lista[i].GetType()))
+                            resurssit.RemoveAt(k);
                     }
 
+                    Debug.Log(poolit[j].GetAmount());
                     if (poolit[j].GetAmount() < amount)
                     {
                         return false;
@@ -174,7 +187,7 @@ public class City : MonoBehaviour
                 }
             }
         }
-
+        Debug.Log(resurssit.Count);
         return resurssit.Count == 0;
     }
     /**
@@ -204,6 +217,7 @@ public class City : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        Instantiate<GameObject>(shopPreFab);
+        GameObject go = Instantiate<GameObject>(shopPreFab);
+        go.transform.SetParent(transform);
     }
 }

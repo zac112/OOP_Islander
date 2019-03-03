@@ -39,9 +39,10 @@ public class PopulationUpgrade : Upgrade
                 break;
         }
         */
-        if (currentLevel <= city.GetLevel(UpgradeTargets.city) * maxLevelModifier)
+        if (currentLevel <= maxLevelModifier)
         {
             city.UseResources(GetPrices(currentLevel + 1));
+            city.populationLevel++;
             city.AddPopulation(currentLevel * 10);
             Debug.Log("population upgraded");
         }

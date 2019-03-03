@@ -22,6 +22,7 @@ public class Forest : Resource
 
     public override void refreshSprite()
     {
+        if (sprites == null) return;
         if (getAmount() < 125)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[7];

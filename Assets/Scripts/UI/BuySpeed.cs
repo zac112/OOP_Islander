@@ -20,7 +20,24 @@ public class BuySpeed : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Ostit Nopeutta");
+            City c = transform.root.gameObject.GetComponent<City>();
+            if (c.IsSufficientResources(createResourceGO(), 50))
+                {
+                c.UpgradeWorkerSpeed();
+                List<int> cost = new List<int>() { 50, 50, 50 };
+                c.UseResources(cost);
+
+                EventSystem.EventHappened(EventType.UpgradeBuilt);
+            }
         }
+    }
+
+    private List<Resource> createResourceGO()
+    {
+        GameObject go = new GameObject();
+        go.AddComponent<Forest>();
+        go.AddComponent<Quarry>();
+        go.AddComponent<BerryBush>();
+        return new List<Resource>(go.GetComponents<Resource>());
     }
 }

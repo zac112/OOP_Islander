@@ -18,7 +18,6 @@ public class Border : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("Kauppa kiinni");
         Destroy(transform.parent.gameObject);
     }
 }

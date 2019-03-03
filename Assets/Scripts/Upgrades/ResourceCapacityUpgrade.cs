@@ -22,10 +22,11 @@ public class ResourceCapacityUpgrade : Upgrade
         City city = gameObject.GetComponent<City>();
         int currentLevel = city.GetLevel(target);
 
-        if (currentLevel <= city.GetLevel(UpgradeTargets.city) * maxLevelModifier)
+        if (currentLevel <= maxLevelModifier)
         {
             city.UseResources((GetPrices(currentLevel)));
-            city.IncreaseCapacity(currentLevel * 100);
+            city.resourcePoolLevel++;
+            city.IncreaseCapacity(currentLevel * 100);            
             Debug.Log("Capacity upgraded");
         }
     }

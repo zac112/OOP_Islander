@@ -20,9 +20,15 @@ public class BuyEfficiency : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Ostit Tehokkuutta");
-            ResourceEfficiencyUpgrade reu = gameObject.GetComponent<ResourceEfficiencyUpgrade>();
-            reu.UpgradeEfficiency();
+            List<Resource> resources = new List<Resource>(3);
+            City c = transform.root.gameObject.GetComponent<City>();
+            if (c.IsSufficientResources(resources, 50))
+            {
+                List<int> cost = new List<int>() { 50, 50, 50 };
+                c.UseResources(cost);
+
+                EventSystem.EventHappened(EventType.UpgradeBuilt);
+            }
         }
     }
 }

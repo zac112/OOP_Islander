@@ -8,13 +8,6 @@ public abstract class Upgrade : MonoBehaviour
 
     private float efficiencyLevel = 1;
 
-    private Dictionary<Resource, int> resources = new Dictionary<Resource, int>()
-    {
-        { null , 1},
-        { null , 1},
-        { null , 0},
-    };
-
     // Start is called before the first frame update
     void Start()
     {
@@ -63,10 +56,9 @@ public abstract class Upgrade : MonoBehaviour
     public List<int> GetPrices(float modifier)
     {
         List<int> prices = new List<int>();
-        foreach(KeyValuePair<Resource, int> key in resources)
-        {
-            prices.Add((int) (key.Value * modifier * 50 * GetEfficiency()));
-        }
+        
+        prices.Add((int) (1 * modifier * 50 * GetEfficiency()));
+        
         return prices;
     }
 

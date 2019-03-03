@@ -32,6 +32,7 @@ public class BerryBush : Resource
 
     public override void refreshSprite()
     {
+        if (sprites == null) return;
         if (getAmount() < 1)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[5];

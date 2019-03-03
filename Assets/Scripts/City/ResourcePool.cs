@@ -28,6 +28,7 @@ public class ResourcePool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
     public void SetResource(Resource r)
     {

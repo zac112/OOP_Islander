@@ -24,7 +24,7 @@ public class RoadUpgrade : Upgrade
         City city = gameObject.GetComponent<City>();
         int currentLevel = (int) road.GetLevel(target);
 
-        if (currentLevel <= city.GetLevel(UpgradeTargets.city) * maxLevelModifier)
+        if (currentLevel <= maxLevelModifier)
         {
             city.UseResources(GetPrices(currentLevel));
             road.IncreaseSpeed(1 / currentLevel);

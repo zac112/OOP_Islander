@@ -23,8 +23,9 @@ public class CollectorUpgrade : Upgrade
         City city = gameObject.GetComponent<City>();
         int currentLevel = city.GetLevel(target);
 
-        if (currentLevel <= city.GetLevel(UpgradeTargets.city) * maxLevelModifier)
+        if (currentLevel <= maxLevelModifier)
         {
+            Debug.Log("Collector Upgraded");
             city.UseResources(GetPrices(currentLevel));
             city.AddCollector();
         }

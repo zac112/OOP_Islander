@@ -15,6 +15,7 @@ public class Quarry : Resource
 
     public override void refreshSprite()
     {
+        if (sprites == null) return;
         if (getAmount() < 100)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[5];
