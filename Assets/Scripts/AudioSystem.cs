@@ -48,12 +48,25 @@ public class AudioSystem : MonoBehaviour, IAction
         }
         if (type == EventType.WoodChopped)
         {
-            
+            WoodClip();
         }
         if (type == EventType.StoneCut)
         {
-            
+            StoneClip();
         }
+        if (type == EventType.Berrypicked)
+        {
+            BerryClip();
+        }
+        if (type == EventType.UpgradeBuilt)
+        {
+
+        }
+        if (type == EventType.TimePeriodChanged)
+        {
+
+        }
+        
     }
 
 
@@ -78,6 +91,19 @@ public class AudioSystem : MonoBehaviour, IAction
     {
         StartCoroutine("FadeOutIn", new Timing(2, 6));
     }
+    public void WoodClip()
+    {
+        StartCoroutine("PlayEffect", 7);
+    }
+    public void StoneClip()
+    {
+        StartCoroutine("PlayEffect", 8);
+    }
+    public void BerryClip()
+    {
+        StartCoroutine("PlayEffect", 9);
+    }
+
     IEnumerator FadeOutIn(Timing t) {
         //yield return FadeOut(t.duration);
         yield return StartCoroutine("FadeOut", t.duration);
