@@ -9,7 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2388334960364419616}
+<<<<<<< HEAD
   - component: {fileID: 506448308499323742}
+=======
+  - component: {fileID: 3814219544740361507}
+>>>>>>> 26ce5a29592f8304c4bcd6a6414c9c688c665a12
   m_Layer: 0
   m_Name: GameWin
   m_TagString: Untagged
@@ -31,7 +35,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &506448308499323742
+=======
+--- !u!114 &3814219544740361507
+>>>>>>> 26ce5a29592f8304c4bcd6a6414c9c688c665a12
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,5 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3674a5cdecf6e14abe5d88e6f0f7618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   housePrefab: {fileID: 0}
   workerPrefab: {fileID: 0}
+=======
+  housePrefab: {fileID: 7607310651946833762, guid: 118ed7528555d45418acb5a87b330000,
+    type: 3}
+  workerPrefab: {fileID: 548039319383633024, guid: 7dc194a2047a39340a91ca7636a56290,
+    type: 3}
+>>>>>>> 26ce5a29592f8304c4bcd6a6414c9c688c665a12
