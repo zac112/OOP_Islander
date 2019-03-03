@@ -4,32 +4,51 @@ using UnityEngine;
 
 public class BerryBush : Resource
 {
-    private float growthspeed;
+    public bool coroutineRunning =false;
 
     public override void checkExistence()
     {
-        
+        if (!coroutineRunning)
+        {
+            StartCoroutine("timer");
+            coroutineRunning = true;
+        }
+    }
+
+    private IEnumerator timer()
+    {
+        yield return new WaitForSeconds(3);
+        setAmount(500);
+        coroutineRunning = false;
+
+
+    }
+
+
+    public override void setAmount(int i)
+    {
+        base.setAmount(i);
     }
 
     public override void refreshSprite()
     {
-        if (getAmount() < 100)
+        if (getAmount() < 1)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[5];
         }
-        else if (getAmount() < 200)
+        else if (getAmount() < 100)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[4];
         }
-        else if (getAmount() < 300)
+        else if (getAmount() < 200)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[3];
         }
-        else if (getAmount() < 400)
+        else if (getAmount() < 300)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[2];
         }
-        else if (getAmount() < 500)
+        else if (getAmount() < 400)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
         }
@@ -42,18 +61,7 @@ public class BerryBush : Resource
     // Start is called before the first frame update
     void Start()
     {
-        setAmount(Random.Range(50, 200));
-        growthspeed = 1;
-        StartCoroutine("Grow");
-    }
-
-    IEnumerator Grow()
-    {
-        while (getAmount() < 600)
-        {
-            setAmount(getAmount() + 1);
-            yield return new WaitForSeconds(growthspeed);
-        }
+        setAmount(500);
     }
 
     // Update is called once per frame
@@ -61,4 +69,5 @@ public class BerryBush : Resource
     {
         
     }
+    
 }

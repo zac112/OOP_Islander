@@ -8,13 +8,26 @@ public abstract class Resource : MonoBehaviour
     private int resources;
 
     [SerializeField]
+    private bool resourceSource;
+
+    [SerializeField]
     protected Sprite[] sprites;
 
+    public bool isResourceSource()
+    {
+        return resourceSource;
+    }
 
-    public void setAmount(int i)
+    public void setResourceSource(bool i)
+    {
+        resourceSource = i;
+    }
+
+    public virtual void setAmount(int i)
     {
         resources = i;
         refreshSprite();
+        checkExistence();
     }
 
     public int getAmount()
@@ -27,16 +40,12 @@ public abstract class Resource : MonoBehaviour
         if (resources-amount < 0)
         {
             int r = resources;
-            resources = 0;
-            refreshSprite();
-            checkExistence();
+            setAmount(0);
             return r;
         }
         else
         {
-            resources = resources - amount;
-            refreshSprite();
-            checkExistence();
+            setAmount(resources - amount);
             return amount;
         }
       

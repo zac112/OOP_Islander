@@ -44,6 +44,7 @@ public class Quarry : Resource
     // Start is called before the first frame update
     void Start()
     {
+
         setAmount(Random.Range(2000, 4000));
     }
 
