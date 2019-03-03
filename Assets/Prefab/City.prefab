@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a69243cd6bee5c34497418b7bbea1e20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ffb6badf0a2c454c990a42fe64e9d03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -120,6 +120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67208887d2c19940b9afdc55a275b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 4ffb6badf0a2c454c990a42fe64e9d03, type: 3}
+  - {fileID: 21300002, guid: 4ffb6badf0a2c454c990a42fe64e9d03, type: 3}
+  - {fileID: 21300004, guid: 4ffb6badf0a2c454c990a42fe64e9d03, type: 3}
+  - {fileID: 21300006, guid: 4ffb6badf0a2c454c990a42fe64e9d03, type: 3}
+  - {fileID: 21300008, guid: 4ffb6badf0a2c454c990a42fe64e9d03, type: 3}
   respanelPrefab: {fileID: 3345454733487414898, guid: 588b79ebfef5a2c4887615dc4856cc0c,
     type: 3}
   resrowPrefab: {fileID: 5085001290068357248, guid: 72232997f27e3c2448b5ad647af22a35,

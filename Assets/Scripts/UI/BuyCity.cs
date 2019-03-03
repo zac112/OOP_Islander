@@ -11,7 +11,11 @@ public class BuyCity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if(!transform.root.gameObject.GetComponent<City>().IsSufficientResources(createResourceGO(), 150))
+        {
+            Color c = gameObject.GetComponent<SpriteRenderer>().color;
+            gameObject.GetComponent<SpriteRenderer>().color = c - new Color(25, 25, 25);
+        }
     }
 
     // Update is called once per frame

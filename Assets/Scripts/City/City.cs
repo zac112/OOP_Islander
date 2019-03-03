@@ -6,6 +6,10 @@ using UnityEngine;
 public class City : MonoBehaviour
 {
     [SerializeField]
+    Sprite[] sprites;
+    private int spriteIndex = 0;
+
+    [SerializeField]
     GameObject respanelPrefab;
 
     [SerializeField]
@@ -104,7 +108,9 @@ public class City : MonoBehaviour
 
     public void AddPopulation(int v)
     {
+        spriteIndex = Math.Min(spriteIndex+1, sprites.Length-1);
         this.population += v;
+        gameObject.GetComponent<SpriteRenderer>().sprite = sprites[spriteIndex];
     }
 
     private void Update()
@@ -179,7 +185,6 @@ public class City : MonoBehaviour
                             resurssit.RemoveAt(k);
                     }
 
-                    Debug.Log(poolit[j].GetAmount());
                     if (poolit[j].GetAmount() < amount)
                     {
                         return false;
@@ -187,7 +192,6 @@ public class City : MonoBehaviour
                 }
             }
         }
-        Debug.Log(resurssit.Count);
         return resurssit.Count == 0;
     }
     /**
