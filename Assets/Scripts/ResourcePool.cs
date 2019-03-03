@@ -59,5 +59,9 @@ public class ResourcePool : MonoBehaviour
     {
         this.maxCapacity += x;
     }
+    public int GetMaxCapacity()
+    {
+        return this.maxCapacity;
+    }
     
 }

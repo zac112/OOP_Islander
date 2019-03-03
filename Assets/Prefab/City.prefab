@@ -119,7 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe928a858872424991e927606dd4bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worker: {fileID: 0}
+  workerlista: []
+  worker: {fileID: 548039319383633024, guid: 7dc194a2047a39340a91ca7636a56290, type: 3}
   population: 0
   populationLevel: 0
   resourcePoolLevel: 0
