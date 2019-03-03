@@ -41,7 +41,9 @@ public abstract class Resource : MonoBehaviour
     {
         return resources;
     }
-    
+
+    // Soittaa resurssin keruuseen liittyvän äänen sekä vähentää resurssista annetun määrän yksiköitä tai asettaa määrän nollaan,
+    // mikäli vähennettävä arvo on suurempi kuin resurssiyksiköiden senhetkinen määrä. Palauttaa resurssin vähennetyn määrän.
     public int extractResource(int amount)
     {
         EventSystem.EventHappened(getEventType());
@@ -58,10 +60,9 @@ public abstract class Resource : MonoBehaviour
         }
     }
 
+    // Metodi spriten päivitystä varten.
     public abstract void refreshSprite();
 
-
-
-
+    // Metodi jolla tarkistetaan resurssien olemassaolon ehdot ja suoritetaan tarvittavat toimenpiteet.
     public abstract void checkExistence();
 }

@@ -12,11 +12,11 @@ public class Forest : Resource
         isForester = i;
         if (isForester == true)
         {
-            growthspeed = 0.5f;
+            growthspeed = 5f;
         }
         else
         {
-            growthspeed = 1f;
+            growthspeed = 10f;
         }
     }
 
