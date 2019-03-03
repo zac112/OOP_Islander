@@ -16,6 +16,11 @@ public class Outcrop : MonoBehaviour
     [SerializeField]
     private Resource neededResource;
 
+    public Resource getNeededResource()
+    {
+        return neededResource;
+    }
+
     public int getAmount()
     {
         return wood;
