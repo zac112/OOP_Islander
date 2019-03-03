@@ -8,19 +8,14 @@ public abstract class Resource : MonoBehaviour
     private int resources;
 
     [SerializeField]
-    private bool resourceSource;
+    private Sprite resourceImg;
 
     [SerializeField]
     protected Sprite[] sprites;
 
-    public bool isResourceSource()
+    public Sprite getResourceImg()
     {
-        return resourceSource;
-    }
-
-    public void setResourceSource(bool i)
-    {
-        resourceSource = i;
+        return resourceImg;
     }
 
     public virtual void setAmount(int i)

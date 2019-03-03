@@ -7,8 +7,7 @@ public class Outcrop : MonoBehaviour
 {
     [SerializeField]
     private int wood;
-
-    [SerializeField]
+    
     private GameObject quarry;
 
     public int getAmount()

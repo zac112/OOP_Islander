@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resources: 0
+  resourceImg: {fileID: 21300000, guid: 28f55f31ef54a8ad3a4167614cf51050, type: 3}
   sprites:
   - {fileID: 21300000, guid: c6be499253804b13b9d479f7394d8bd4, type: 3}
   - {fileID: 21300002, guid: c6be499253804b13b9d479f7394d8bd4, type: 3}
