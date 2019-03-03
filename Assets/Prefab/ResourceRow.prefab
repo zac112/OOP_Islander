@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2308576596148104492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.93, y: 0.291, z: 0}
-  m_LocalScale: {x: 0.70104766, y: 0.75656927, z: 1}
+  m_LocalScale: {x: 2.33, y: 1.6, z: 1}
   m_Children: []
   m_Father: {fileID: 5761957582027681033}
   m_RootOrder: 0
@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 5085001290068357248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.387, y: 0.282, z: 0}
-  m_LocalScale: {x: 0.10027549, y: 0.14378266, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 5007991825820669350}
   m_Father: {fileID: 0}
@@ -178,4 +178,10 @@ MonoBehaviour:
   - {fileID: 21300004, guid: 82eec913fc22f9043b7dd6a14b77fe77, type: 3}
   - {fileID: 21300006, guid: 82eec913fc22f9043b7dd6a14b77fe77, type: 3}
   - {fileID: 21300008, guid: 82eec913fc22f9043b7dd6a14b77fe77, type: 3}
-  spriteR: {fileID: 0}
+  upgradesprites:
+  - {fileID: 21300000, guid: 45d0e9a104687534f8c83716c90e6532, type: 3}
+  - {fileID: 21300002, guid: 45d0e9a104687534f8c83716c90e6532, type: 3}
+  - {fileID: 21300004, guid: 45d0e9a104687534f8c83716c90e6532, type: 3}
+  - {fileID: 21300006, guid: 45d0e9a104687534f8c83716c90e6532, type: 3}
+  - {fileID: 21300008, guid: 45d0e9a104687534f8c83716c90e6532, type: 3}
+  - {fileID: 21300010, guid: 45d0e9a104687534f8c83716c90e6532, type: 3}
