@@ -145,6 +145,38 @@ public class City : MonoBehaviour
         resrow.GetComponent<ResourceRow>().SetRow(r, x - 2f, y, z);
     }
 
+    public void UpgradeWorkerSpeed() {
+        foreach (GameObject go in workerlista) {
+            go.GetComponent<Collector>().speed += 1;
+        }
+    }
+
+    public bool IsSufficientResources(List<Resource> lista, int amount)
+    {
+        ResourcePool[] poolit = gameObject.GetComponents<ResourcePool>();
+        List<Resource> resurssit = new List<Resource>(lista);
+        for (int i = 0; i < lista.Count; i++)
+        {
+            for (int j = 0; j < poolit.Length; j++)
+            {
+                if (poolit[j].GetResource().GetType().Equals(lista[i].GetType()))
+                {
+                    for(int k = 0; k<resurssit.Count; k++)
+                    {
+                        if(resurssit[k].GetType().Equals(lista[i].GetType()))
+                            resurssit.Remove(poolit[j].GetResource());
+                    }
+
+                    if (poolit[j].GetAmount() < amount)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return resurssit.Count == 0;
+    }
     /**
      * Lisaa kaikkien resurssipoolien maxKapasiteettia x:n verran
      */
