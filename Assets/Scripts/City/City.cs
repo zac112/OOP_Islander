@@ -31,7 +31,8 @@ public class City : MonoBehaviour
 
     public int paneelienmaara = 0;
 
-
+    [SerializeField]
+    GameObject shopPreFab;
 
     // Start is called before the first frame update
     void Start()
@@ -169,8 +170,8 @@ public class City : MonoBehaviour
     {
         return workerlista;
     }
-    public void OnMouseDown()
+    private void OnMouseEnter()
     {
-        AddCollector();
+        Instantiate<GameObject>(shopPreFab);
     }
 }
