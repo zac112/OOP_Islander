@@ -13,8 +13,6 @@ public class GroundGenerator : MonoBehaviour
     private GameObject[] resourceGOs = null;
     [SerializeField]
     private GameObject homeGO = null;
-    [SerializeField]
-    private GameObject workerGO = null;
 
     private int food = 2;
     private int stone = 3;
@@ -63,15 +61,15 @@ public class GroundGenerator : MonoBehaviour
         
         if (Random.value < 0.10f)
         {
-            ground[x, y] = 2;
+            ground[x, y] = wood;
         }
         if (Random.value < 0.10f)
         {
-            ground[x, y] = 3;
+            ground[x, y] = stone;
         }
         if (Random.value < 0.10f)
         {
-            ground[x, y] = 4;
+            ground[x, y] = food;
         }
     }
     void createGround()
@@ -150,8 +148,8 @@ public class GroundGenerator : MonoBehaviour
 
     private void createHome() {
         ground[ground.GetLength(0) / 2, ground.GetLength(1) / 2] = home;
-        spawn(homeGO, houseCoords[0], houseCoords[1], houseDepth);
-        homeGO.GetComponent<City>().AddCollector();
+        GameObject go = spawn(homeGO, houseCoords[0], houseCoords[1], houseDepth);
+        go.GetComponent<City>().AddCollector();
     }
     private GameObject spawn(GameObject go, int x, int y, int z) {
         return Instantiate<GameObject>(go, new Vector3(x, y, z), Quaternion.identity);
