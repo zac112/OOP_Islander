@@ -28,7 +28,7 @@ public class AudioSystem : MonoBehaviour, IAction
     public void React(EventType type) {
         if (type == EventType.GameStarts)
         {
-            GameStartsClip();
+            StartCoroutine("GameStartsClip");
         }
         if (type == EventType.CitySmall)
         {
@@ -70,10 +70,13 @@ public class AudioSystem : MonoBehaviour, IAction
     }
 
 
-    public void GameStartsClip()
+    public IEnumerator GameStartsClip()
     {
-        StartCoroutine("FadeOutIn", new Timing(2,1));
         StartCoroutine("PlayEffect", 6);
+        yield return new WaitForSeconds(2);
+        ac.clip = musics[1];
+        StartCoroutine("FadeIn", 0);
+        
     }
     public void CitySmallClip()
     {
@@ -149,7 +152,7 @@ public class AudioSystem : MonoBehaviour, IAction
         AudioSource v = gameObject.AddComponent<AudioSource>();
         v.clip = musics[clip];
         v.Play();
-        yield return new WaitForSeconds(v.clip.length + 1);
+        yield return new WaitForSeconds(v.clip.length);
         Destroy(v);
     }
 
