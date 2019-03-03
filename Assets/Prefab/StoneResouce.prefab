@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4378544729630622907}
   - component: {fileID: 6537826622454043909}
   - component: {fileID: 4263803972273305565}
+  - component: {fileID: 6933693375278105387}
   m_Layer: 0
   m_Name: StoneResouce
   m_TagString: Resource
@@ -101,3 +102,29 @@ MonoBehaviour:
   - {fileID: 21300006, guid: 69185a3ed6e033642b69e02c07c3804c, type: 3}
   - {fileID: 21300008, guid: 69185a3ed6e033642b69e02c07c3804c, type: 3}
   - {fileID: 21300010, guid: 69185a3ed6e033642b69e02c07c3804c, type: 3}
+--- !u!61 &6933693375278105387
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6392040089189307514}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

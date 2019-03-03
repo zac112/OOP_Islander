@@ -80,9 +80,7 @@ public class Collector : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null)
             {
-                if (hit.collider.gameObject.tag == "Home")
-                    home.gameObject.GetComponent<City>().AddCollector();
-                if (hit.collider.gameObject.GetComponent<Outcrop>() != null)
+                if (hit.collider.gameObject.GetComponent<Outcrop>() != null && hit.collider.gameObject.tag == "Buildable")
                 {
                     this.send_to_resource = true;
                 }
@@ -106,18 +104,19 @@ public class Collector : MonoBehaviour
 
         if (target_flag != null)
         {
-            if(collision.gameObject.transform.position == target_flag.transform.position) { 
+            if(collision.gameObject.transform.position == target_flag.transform.position)
+            {
                 if(resource == null)
                 {
                     if(home.GetComponent<BoxCollider2D>().bounds.Contains(new Vector3(target_flag.transform.position.x, target_flag.transform.position.y,home.transform.position.z)))
                     {
                         Destroy(target_flag);
                     }
-                    else if (send_to_resource && target.GetComponent<Outcrop>())
+                    else if (send_to_resource && target.GetComponent<Outcrop>() && target.tag == "Buildable")
                     {
                         if(this.amount > 0)
-                            target.GetComponent<Outcrop>().setAmount(this.amount);
-                        //Requested_resource = target.GetComponent<Outcrop>();
+                            target.GetComponent<Outcrop>().addResource(this.amount);
+                        Requested_resource = target.GetComponent<Outcrop>().getNeededResource();
                         Requested_amount = target.GetComponent<Outcrop>().stillNeeded();
                         StartCoroutine("goHome");
                     }
@@ -130,30 +129,36 @@ public class Collector : MonoBehaviour
                         StartCoroutine("goHome");
                     }
 
-
+                    
                 }
                 else
+                {
                     StartCoroutine("goHome");
-            }
-        }
-        if (move_to.gameObject.tag == "Home" && this.resource != null)
-        {
-            if (target.GetComponent<Outcrop>())
-            {
-                /*if(this.Requested_amount < this.max_amount)
-                    this.amount = home.GetComponent<City>().UseResource(, this.Requested_amount);
-                else
-                    this.amount = home.GetComponent<City>().UseResource(, this.max_amount);*/
+                }               
             }
             else
             {
+                if (collision.gameObject.GetComponent<BoxCollider2D>().bounds.Contains(new Vector3(home.transform.position.x, home.transform.position.y, collision.gameObject.transform.position.z)))
+                {
+                    if (target.GetComponent<Outcrop>() && this.Requested_resource != null)
+                    {
+                        if(this.Requested_amount < this.max_amount)
+                            this.amount = home.GetComponent<City>().UseResource(this.Requested_resource, this.Requested_amount);
+                        else
+                            this.amount = home.GetComponent<City>().UseResource(this.Requested_resource, this.max_amount);
+                    }
+                    else
+                    {
 
-                //resets amount and resource variables
-                collision.gameObject.GetComponent<City>().AddResource(this.resource, this.amount);
-                this.amount = 0;
-                this.resource = null;
+                        //resets amount and resource variables
+                        collision.gameObject.GetComponent<City>().AddResource(this.resource, this.amount);
+                        this.amount = 0;
+                        this.resource = null;
+                    }
+
+                    MoveTo(this.target);
+                }
             }
-            MoveTo(this.target);            
         }
     }
     IEnumerator goHome()
