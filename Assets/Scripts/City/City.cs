@@ -116,7 +116,7 @@ public class City : MonoBehaviour
 */
     public void AddResource(Resource r, int amount)
     {
-        if (amount < 0)
+        if (r == null || amount < 0)
         {
             return;
         }

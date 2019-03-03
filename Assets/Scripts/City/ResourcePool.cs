@@ -31,6 +31,10 @@ public class ResourcePool : MonoBehaviour
     }
     public void SetResource(Resource r)
     {
+        if (r == null)
+        {
+            return;
+        }
         this.r = r;
         icon = r.getResourceImg();
     }
@@ -78,6 +82,10 @@ public class ResourcePool : MonoBehaviour
     public int GetMaxCapacity()
     {
         return this.maxCapacity;
+    }
+    public int GetAmount()
+    {
+        return amount;
     }
     
 }
